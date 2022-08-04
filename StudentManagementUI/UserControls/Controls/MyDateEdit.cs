@@ -13,17 +13,19 @@ using System.Threading.Tasks;
 namespace StudentManagementUI.UserControls.Controls
 {
     [ToolboxItem(true)]
-    public class MyDateEdit:DateEdit,IStatusBarShortcut
+    public class MyDateEdit : DateEdit, IStatusBarShortcut
     {
         public MyDateEdit()
         {
             Properties.AppearanceFocused.BackColor = Color.LightCyan;
-            Properties.AllowNullInput = DefaultBoolean.False;
             Properties.Appearance.TextOptions.HAlignment = HorzAlignment.Center;
+            Properties.AllowNullInput = DefaultBoolean.False;
+            //It will automaticlly go whenever we choose day it jumps into month and year
             Properties.Mask.MaskType = MaskType.DateTimeAdvancingCaret;
         }
 
         public override bool EnterMoveNextControl { get; set; } = true;
+
         public string StatusBarShortcut { get; set; } = "F4 :";
         public string StatusBarShortcutDescription { get; set; } = "Choose the date";
         public string StatusBarDescription { get; set; }
