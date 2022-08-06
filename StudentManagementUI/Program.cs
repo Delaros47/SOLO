@@ -1,4 +1,5 @@
 ﻿using StudentManagementUI.Forms.BaseForms;
+using StudentManagementUI.Forms.SchoolForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace StudentManagementUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BaseListForm());
+            Application.Run(new SchoolListForm());
         }
     }
 }

@@ -45,12 +45,12 @@ namespace StudentManagementUI.UserControls.Controls
             group.LayoutMode = LayoutMode.Table;
             #region Comment
             //Since it adds two Columns and Rows we will make it 3 columns and 10 rows 
-            //Here we make our first Column as Absolute means that it is fixed that we cannot change width of it and we made our first Column Width 230 and second column we made it 100 but whenever we resize our DataLayout control width will get bigger with Percentange with 100% that's why we made it percent and we make it smaller our DatalayoutConrol our Percent group also will get smaller
+            //Here we make our first Column as Absolute means that it is fixed that we cannot change width of it and we made our first Column Width 220 and second column we made it 100 but whenever we resize our DataLayout control width will get bigger with Percentange with 100% that's why we made it percent and we make it smaller our DatalayoutConrol our Percent group also will get smaller
             //Now Since manually Table Mode creates us two Columns that we will create the third one by ourselves with Absolute (fixed Width 110)
             #endregion
 
             group.OptionsTableLayoutGroup.ColumnDefinitions[0].SizeType = SizeType.Absolute;
-            group.OptionsTableLayoutGroup.ColumnDefinitions[0].Width = 230;
+            group.OptionsTableLayoutGroup.ColumnDefinitions[0].Width = 220;
             group.OptionsTableLayoutGroup.ColumnDefinitions[1].SizeType = SizeType.Percent;
             group.OptionsTableLayoutGroup.ColumnDefinitions[1].Width = 100;
             group.OptionsTableLayoutGroup.ColumnDefinitions.Add(new ColumnDefinition { SizeType = SizeType.Absolute, Width = 110 });

@@ -39,6 +39,27 @@
             this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             this.btnSend = new DevExpress.XtraBars.BarSubItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
+            this.barNew = new DevExpress.XtraBars.BarStaticItem();
+            this.barNewDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barDelete = new DevExpress.XtraBars.BarStaticItem();
+            this.barDeleteDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barSelect = new DevExpress.XtraBars.BarStaticItem();
+            this.barSelectDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barEdit = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barRefresh = new DevExpress.XtraBars.BarStaticItem();
+            this.barRefreshDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barFilter = new DevExpress.XtraBars.BarStaticItem();
+            this.barFilterDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barColumns = new DevExpress.XtraBars.BarStaticItem();
+            this.barColumnsDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barPrint = new DevExpress.XtraBars.BarStaticItem();
+            this.barPrintDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barSend = new DevExpress.XtraBars.BarStaticItem();
+            this.barSendDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.barExit = new DevExpress.XtraBars.BarStaticItem();
+            this.barExitDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.btnActivePassiveList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -63,9 +84,30 @@
             this.btnColumns,
             this.btnPrint,
             this.btnSend,
-            this.btnExit});
+            this.btnExit,
+            this.barNew,
+            this.barNewDescription,
+            this.barDelete,
+            this.barDeleteDescription,
+            this.barSelect,
+            this.barSelectDescription,
+            this.barEdit,
+            this.barEditDescription,
+            this.barRefresh,
+            this.barRefreshDescription,
+            this.barFilter,
+            this.barFilterDescription,
+            this.barColumns,
+            this.barColumnsDescription,
+            this.barPrint,
+            this.barPrintDescription,
+            this.barSend,
+            this.barSendDescription,
+            this.barExit,
+            this.barExitDescription,
+            this.btnActivePassiveList});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 11;
+            this.ribbonControl.MaxItemId = 32;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -77,7 +119,7 @@
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowQatLocationSelector = false;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1190, 102);
+            this.ribbonControl.Size = new System.Drawing.Size(1254, 102);
             this.ribbonControl.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -172,6 +214,188 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.ShortcutKeyDisplayString = "Esc";
             // 
+            // barNew
+            // 
+            this.barNew.Caption = "Insert :";
+            this.barNew.Id = 11;
+            this.barNew.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barNew.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barNew.ItemAppearance.Normal.Options.UseFont = true;
+            this.barNew.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barNew.Name = "barNew";
+            // 
+            // barNewDescription
+            // 
+            this.barNewDescription.Caption = "New";
+            this.barNewDescription.Id = 12;
+            this.barNewDescription.Name = "barNewDescription";
+            // 
+            // barDelete
+            // 
+            this.barDelete.Caption = "Delete :";
+            this.barDelete.Id = 13;
+            this.barDelete.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barDelete.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barDelete.ItemAppearance.Normal.Options.UseFont = true;
+            this.barDelete.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barDelete.Name = "barDelete";
+            // 
+            // barDeleteDescription
+            // 
+            this.barDeleteDescription.Caption = "Remove";
+            this.barDeleteDescription.Id = 14;
+            this.barDeleteDescription.Name = "barDeleteDescription";
+            // 
+            // barSelect
+            // 
+            this.barSelect.Caption = "Enter :";
+            this.barSelect.Id = 15;
+            this.barSelect.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barSelect.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barSelect.ItemAppearance.Normal.Options.UseFont = true;
+            this.barSelect.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barSelect.Name = "barSelect";
+            // 
+            // barSelectDescription
+            // 
+            this.barSelectDescription.Caption = "Select";
+            this.barSelectDescription.Id = 16;
+            this.barSelectDescription.Name = "barSelectDescription";
+            // 
+            // barEdit
+            // 
+            this.barEdit.Caption = "F3 :";
+            this.barEdit.Id = 17;
+            this.barEdit.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barEdit.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barEdit.ItemAppearance.Normal.Options.UseFont = true;
+            this.barEdit.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barEdit.Name = "barEdit";
+            // 
+            // barEditDescription
+            // 
+            this.barEditDescription.Caption = "Edit";
+            this.barEditDescription.Id = 18;
+            this.barEditDescription.Name = "barEditDescription";
+            // 
+            // barRefresh
+            // 
+            this.barRefresh.Caption = "F5 :";
+            this.barRefresh.Id = 19;
+            this.barRefresh.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barRefresh.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barRefresh.ItemAppearance.Normal.Options.UseFont = true;
+            this.barRefresh.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barRefresh.Name = "barRefresh";
+            // 
+            // barRefreshDescription
+            // 
+            this.barRefreshDescription.Caption = "Refresh";
+            this.barRefreshDescription.Id = 20;
+            this.barRefreshDescription.Name = "barRefreshDescription";
+            // 
+            // barFilter
+            // 
+            this.barFilter.Caption = "F8 :";
+            this.barFilter.Id = 21;
+            this.barFilter.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barFilter.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barFilter.ItemAppearance.Normal.Options.UseFont = true;
+            this.barFilter.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barFilter.Name = "barFilter";
+            // 
+            // barFilterDescription
+            // 
+            this.barFilterDescription.Caption = "Filter";
+            this.barFilterDescription.Id = 22;
+            this.barFilterDescription.Name = "barFilterDescription";
+            // 
+            // barColumns
+            // 
+            this.barColumns.Caption = "Ctrl+O :";
+            this.barColumns.Id = 23;
+            this.barColumns.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barColumns.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barColumns.ItemAppearance.Normal.Options.UseFont = true;
+            this.barColumns.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barColumns.Name = "barColumns";
+            // 
+            // barColumnsDescription
+            // 
+            this.barColumnsDescription.Caption = "Columns";
+            this.barColumnsDescription.Id = 24;
+            this.barColumnsDescription.Name = "barColumnsDescription";
+            // 
+            // barPrint
+            // 
+            this.barPrint.Caption = "Ctrl+P :";
+            this.barPrint.Id = 25;
+            this.barPrint.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barPrint.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barPrint.ItemAppearance.Normal.Options.UseFont = true;
+            this.barPrint.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barPrint.Name = "barPrint";
+            // 
+            // barPrintDescription
+            // 
+            this.barPrintDescription.Caption = "Print";
+            this.barPrintDescription.Id = 26;
+            this.barPrintDescription.Name = "barPrintDescription";
+            // 
+            // barSend
+            // 
+            this.barSend.Caption = "F12 :";
+            this.barSend.Id = 27;
+            this.barSend.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barSend.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barSend.ItemAppearance.Normal.Options.UseFont = true;
+            this.barSend.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barSend.Name = "barSend";
+            // 
+            // barSendDescription
+            // 
+            this.barSendDescription.Caption = "Send";
+            this.barSendDescription.Id = 28;
+            this.barSendDescription.Name = "barSendDescription";
+            // 
+            // barExit
+            // 
+            this.barExit.Caption = "Esc :";
+            this.barExit.Id = 29;
+            this.barExit.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barExit.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.barExit.ItemAppearance.Normal.Options.UseFont = true;
+            this.barExit.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barExit.Name = "barExit";
+            // 
+            // barExitDescription
+            // 
+            this.barExitDescription.Caption = "Exit";
+            this.barExitDescription.Id = 30;
+            this.barExitDescription.Name = "barExitDescription";
+            // 
+            // btnActivePassiveList
+            // 
+            this.btnActivePassiveList.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnActivePassiveList.Caption = "Passive List";
+            this.btnActivePassiveList.Id = 31;
+            this.btnActivePassiveList.ImageOptions.Image = global::StudentManagementUI.Properties.Resources.article_16x16;
+            this.btnActivePassiveList.ImageOptions.LargeImage = global::StudentManagementUI.Properties.Resources.article_32x32;
+            this.btnActivePassiveList.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnActivePassiveList.ItemAppearance.Hovered.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnActivePassiveList.ItemAppearance.Hovered.Options.UseFont = true;
+            this.btnActivePassiveList.ItemAppearance.Hovered.Options.UseForeColor = true;
+            this.btnActivePassiveList.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnActivePassiveList.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Maroon;
+            this.btnActivePassiveList.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnActivePassiveList.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.btnActivePassiveList.ItemAppearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnActivePassiveList.ItemAppearance.Pressed.ForeColor = System.Drawing.Color.Maroon;
+            this.btnActivePassiveList.ItemAppearance.Pressed.Options.UseFont = true;
+            this.btnActivePassiveList.ItemAppearance.Pressed.Options.UseForeColor = true;
+            this.btnActivePassiveList.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
+            this.btnActivePassiveList.Name = "btnActivePassiveList";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -196,10 +420,31 @@
             // 
             // ribbonStatusBar1
             // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.barNew);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barNewDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barDelete, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barDeleteDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barSelect, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barSelectDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barEdit, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barEditDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barRefresh, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barRefreshDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barFilter, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barFilterDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barColumns, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barColumnsDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barPrint, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barPrintDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barSend, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barSendDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barExit, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barExitDescription);
+            this.ribbonStatusBar1.ItemLinks.Add(this.btnActivePassiveList);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 368);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1190, 31);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1254, 31);
             // 
             // ribbonPage2
             // 
@@ -210,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 399);
+            this.ClientSize = new System.Drawing.Size(1254, 399);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl);
             this.IconOptions.ShowIcon = false;
@@ -241,5 +486,26 @@
         private DevExpress.XtraBars.BarSubItem btnSend;
         protected DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.BarButtonItem btnExit;
+        private DevExpress.XtraBars.BarStaticItem barNew;
+        private DevExpress.XtraBars.BarStaticItem barNewDescription;
+        private DevExpress.XtraBars.BarStaticItem barDelete;
+        private DevExpress.XtraBars.BarStaticItem barDeleteDescription;
+        private DevExpress.XtraBars.BarStaticItem barSelect;
+        private DevExpress.XtraBars.BarStaticItem barSelectDescription;
+        private DevExpress.XtraBars.BarStaticItem barEdit;
+        private DevExpress.XtraBars.BarStaticItem barEditDescription;
+        private DevExpress.XtraBars.BarStaticItem barRefresh;
+        private DevExpress.XtraBars.BarStaticItem barRefreshDescription;
+        private DevExpress.XtraBars.BarStaticItem barFilter;
+        private DevExpress.XtraBars.BarStaticItem barFilterDescription;
+        private DevExpress.XtraBars.BarStaticItem barColumns;
+        private DevExpress.XtraBars.BarStaticItem barColumnsDescription;
+        private DevExpress.XtraBars.BarStaticItem barPrint;
+        private DevExpress.XtraBars.BarStaticItem barPrintDescription;
+        private DevExpress.XtraBars.BarStaticItem barSend;
+        private DevExpress.XtraBars.BarStaticItem barSendDescription;
+        private DevExpress.XtraBars.BarStaticItem barExit;
+        private DevExpress.XtraBars.BarStaticItem barExitDescription;
+        private DevExpress.XtraBars.BarButtonItem btnActivePassiveList;
     }
 }
