@@ -76,7 +76,6 @@ namespace DataAccess.Base
          * Here it will simply updates one entity but with only certain Columns we want in this way it will be more performnaced for example in City we might only want to update CityName not PrivateCode,State or Description
          */
         #endregion
-
         public void Update(T entity, IEnumerable<string> fields)
         {
             #region Comment

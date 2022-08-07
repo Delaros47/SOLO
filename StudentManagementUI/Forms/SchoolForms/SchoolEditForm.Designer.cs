@@ -79,7 +79,7 @@
             this.ribbonControl.SearchEditItem.EditWidth = 150;
             this.ribbonControl.SearchEditItem.Id = -5000;
             this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.ribbonControl.Size = new System.Drawing.Size(380, 102);
+            this.ribbonControl.Size = new System.Drawing.Size(365, 102);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // myDataLayoutControl
@@ -95,7 +95,7 @@
             this.myDataLayoutControl.Name = "myDataLayoutControl";
             this.myDataLayoutControl.OptionsFocus.EnableAutoTabOrder = false;
             this.myDataLayoutControl.Root = this.Root;
-            this.myDataLayoutControl.Size = new System.Drawing.Size(380, 176);
+            this.myDataLayoutControl.Size = new System.Drawing.Size(365, 176);
             this.myDataLayoutControl.TabIndex = 0;
             this.myDataLayoutControl.Text = "myDataLayoutControl1";
             // 
@@ -108,7 +108,7 @@
             this.txtDescription.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtDescription.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtDescription.Properties.MaxLength = 500;
-            this.txtDescription.Size = new System.Drawing.Size(283, 56);
+            this.txtDescription.Size = new System.Drawing.Size(268, 56);
             this.txtDescription.StatusBarDescription = "Enter the Description";
             this.txtDescription.StyleController = this.myDataLayoutControl;
             this.txtDescription.TabIndex = 3;
@@ -125,7 +125,7 @@
             this.btnDistrictName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.btnDistrictName.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.btnDistrictName.Size = new System.Drawing.Size(143, 20);
+            this.btnDistrictName.Size = new System.Drawing.Size(133, 20);
             this.btnDistrictName.StatusBarDescription = "Enter the District name";
             this.btnDistrictName.StatusBarShortcut = "F4 :";
             this.btnDistrictName.StatusBarShortcutDescription = "Choose the District name";
@@ -144,7 +144,7 @@
             this.btnCityName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.btnCityName.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.btnCityName.Size = new System.Drawing.Size(143, 20);
+            this.btnCityName.Size = new System.Drawing.Size(133, 20);
             this.btnCityName.StatusBarDescription = "Enter the City name";
             this.btnCityName.StatusBarShortcut = "F4 :";
             this.btnCityName.StatusBarShortcutDescription = "Choose the City name";
@@ -155,7 +155,7 @@
             // 
             this.tglState.EditValue = true;
             this.tglState.EnterMoveNextControl = true;
-            this.tglState.Location = new System.Drawing.Point(262, 12);
+            this.tglState.Location = new System.Drawing.Point(247, 12);
             this.tglState.MenuManager = this.ribbonControl;
             this.tglState.Name = "tglState";
             this.tglState.Properties.Appearance.ForeColor = System.Drawing.Color.Maroon;
@@ -179,7 +179,7 @@
             this.txtSchoolName.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtSchoolName.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtSchoolName.Properties.MaxLength = 50;
-            this.txtSchoolName.Size = new System.Drawing.Size(283, 20);
+            this.txtSchoolName.Size = new System.Drawing.Size(268, 20);
             this.txtSchoolName.StatusBarDescription = "Enter the School name";
             this.txtSchoolName.StyleController = this.myDataLayoutControl;
             this.txtSchoolName.TabIndex = 0;
@@ -197,7 +197,7 @@
             this.txtPrivateCode.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtPrivateCode.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtPrivateCode.Properties.MaxLength = 30;
-            this.txtPrivateCode.Size = new System.Drawing.Size(143, 20);
+            this.txtPrivateCode.Size = new System.Drawing.Size(133, 20);
             this.txtPrivateCode.StatusBarDescription = "Enter the Private Code";
             this.txtPrivateCode.StyleController = this.myDataLayoutControl;
             this.txtPrivateCode.TabIndex = 5;
@@ -216,7 +216,7 @@
             this.Root.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             this.Root.Name = "Root";
             columnDefinition1.SizeType = System.Windows.Forms.SizeType.Absolute;
-            columnDefinition1.Width = 220D;
+            columnDefinition1.Width = 210D;
             columnDefinition2.SizeType = System.Windows.Forms.SizeType.Percent;
             columnDefinition2.Width = 100D;
             columnDefinition3.SizeType = System.Windows.Forms.SizeType.Absolute;
@@ -241,7 +241,7 @@
             rowDefinition3,
             rowDefinition4,
             rowDefinition5});
-            this.Root.Size = new System.Drawing.Size(380, 176);
+            this.Root.Size = new System.Drawing.Size(365, 176);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -251,7 +251,7 @@
             this.layoutControlItem1.Control = this.txtPrivateCode;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(220, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(210, 24);
             this.layoutControlItem1.Text = "Private Code";
             this.layoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(63, 13);
@@ -266,7 +266,7 @@
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.OptionsTableLayoutItem.ColumnSpan = 3;
             this.layoutControlItem2.OptionsTableLayoutItem.RowIndex = 1;
-            this.layoutControlItem2.Size = new System.Drawing.Size(360, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(345, 24);
             this.layoutControlItem2.Text = "School Name";
             this.layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 13);
@@ -277,7 +277,7 @@
             this.layoutControlItem3.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
             this.layoutControlItem3.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem3.Control = this.tglState;
-            this.layoutControlItem3.Location = new System.Drawing.Point(250, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(235, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.OptionsTableLayoutItem.ColumnIndex = 2;
             this.layoutControlItem3.Size = new System.Drawing.Size(110, 24);
@@ -292,7 +292,7 @@
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.OptionsTableLayoutItem.RowIndex = 2;
-            this.layoutControlItem4.Size = new System.Drawing.Size(220, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(210, 24);
             this.layoutControlItem4.Text = "City Name";
             this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(63, 13);
@@ -306,7 +306,7 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.OptionsTableLayoutItem.RowIndex = 3;
-            this.layoutControlItem5.Size = new System.Drawing.Size(220, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(210, 24);
             this.layoutControlItem5.Text = "District Name";
             this.layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(63, 13);
@@ -321,7 +321,7 @@
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.OptionsTableLayoutItem.ColumnSpan = 3;
             this.layoutControlItem6.OptionsTableLayoutItem.RowIndex = 4;
-            this.layoutControlItem6.Size = new System.Drawing.Size(360, 60);
+            this.layoutControlItem6.Size = new System.Drawing.Size(345, 60);
             this.layoutControlItem6.Text = "Description";
             this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(63, 13);
@@ -331,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 309);
+            this.ClientSize = new System.Drawing.Size(365, 309);
             this.Controls.Add(this.myDataLayoutControl);
             this.IconOptions.ShowIcon = false;
             this.Name = "SchoolEditForm";

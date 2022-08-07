@@ -28,7 +28,7 @@ namespace StudentManagementUI.UserControls.Controls
             Properties.GlyphAlignment = HorzAlignment.Far;
             Properties.Appearance.ForeColor = Color.Maroon;
             //This is whenever we open our form that ToggleSwitch will always be on
-            IsOn = true;
+            //IsOn = true;
         }
 
         public override bool EnterMoveNextControl { get; set; } = true;

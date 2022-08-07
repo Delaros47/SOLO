@@ -1,6 +1,8 @@
 ﻿using Model.Entities.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +16,12 @@ namespace Model.Entities
     #endregion
     public class District:BaseEntityState
     {
+        [Index("IX_PrivateCode",IsUnique =false)]
+        public override string PrivateCode { get; set; }
+        [Required,StringLength(50)]
         public string DistrictName { get; set; }
         public long CityId { get; set; }
+        [StringLength(500)]
         public string Description { get; set; }
 
         public City City { get; set; }

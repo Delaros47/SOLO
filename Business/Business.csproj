@@ -53,13 +53,22 @@
     <Compile Include="Base\BaseBll.cs" />
     <Compile Include="Functions\Converts.cs" />
     <Compile Include="Functions\GeneralFunctions.cs" />
+    <Compile Include="General\SchoolBll.cs" />
     <Compile Include="Interfaces\IBaseBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{DECE1A01-2CA9-489A-BD6E-C57B2A0F8481}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{42288C84-4062-416A-8DFC-A80CE99FEE83}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{9E65B915-CA9C-49DC-869A-4687722F0117}</Project>
+      <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{55A5FEC9-07B6-4E43-B5D9-0596405584BA}</Project>
