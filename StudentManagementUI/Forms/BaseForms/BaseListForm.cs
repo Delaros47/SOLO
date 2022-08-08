@@ -1,4 +1,5 @@
-﻿using Common.Enums;
+﻿using Business.Interfaces;
+using Common.Enums;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
@@ -37,9 +38,11 @@ namespace StudentManagementUI.Forms.BaseForms
         protected IBaseFormShow BaseFormShow;
         protected FormType BaseFormType;
         protected internal GridView Table;
-        protected bool ShowActiveList = true;
+        protected bool ShowActivePassiveList = true;
         protected internal bool MultiSelect;
         protected internal BaseEntity SelectedEntity;
+        protected IBaseBll BaseBll;
+        protected ControlNavigator Navigator;
 
         public BaseListForm()
         {
@@ -74,6 +77,28 @@ namespace StudentManagementUI.Forms.BaseForms
             Table.KeyDown += Table_KeyDown;
             //Form Events
         }
+        #region Comment
+        /*
+         * This MyBaseListLoads will run in other ListForms in order to set our values
+         * We set MultiSelect and Navigator on MyBaseListLoads() and also it will refresh our Table (GridView) while we are running it
+         */
+        #endregion
+        protected internal void MyBaseListLoads()
+        {
+            FillMyVariables();
+            EventsLoad();
+            Table.OptionsSelection.MultiSelect = MultiSelect;
+            Navigator.NavigatableControl = Table.GridControl;
+            Cursor.Current = Cursors.WaitCursor;
+            EntityRefresh();
+            Cursor.Current = DefaultCursor;
+        }
+        #region Comment
+        /*
+         * Here we will be set Table,FormType,and other here since it is virtual so it requires to be inheritted from other list form and set there here it will be empty we can access all others because they are protected
+         */
+        #endregion
+        protected virtual void FillMyVariables() { }
 
         #region Comment
         /*
@@ -135,8 +160,21 @@ namespace StudentManagementUI.Forms.BaseForms
             }
             else
             {
-
+                #region Comment
+                /*
+                 * Here we will create extension method it will get Row from GridView then it will returns to us as BaseEntity type so now we go to GeneralFunctions method and start writing it
+                 * 
+                 */
+                #endregion
+                SelectedEntity = Table.GetRow<BaseEntity>();
             }
+            #region Comment
+            /*
+             * Here We have written below if we select our Row then it will put DialogResult OK then it will close our ListForm then we will be using DialogResult
+             */
+            #endregion
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         #region Comment
@@ -164,11 +202,12 @@ namespace StudentManagementUI.Forms.BaseForms
         {
             
         }
-
-        private void EntityRefresh()
-        {
-            
-        }
+        #region Comment
+        /*
+         * Here we made our EntityRefresh method as virtual cause we will not anything here we will override on other ListForms
+         */
+        #endregion
+        protected virtual void EntityRefresh() { }
 
         
 
@@ -274,7 +313,7 @@ namespace StudentManagementUI.Forms.BaseForms
             }
             else if (e.Item==btnActivePassiveList)
             {
-                ShowActiveList = !ShowActiveList;
+                ShowActivePassiveList = !ShowActivePassiveList;
                 EntityActivePassiveListCaption();
             }
 

@@ -34,5 +34,25 @@ namespace StudentManagementUI.Functions
             return -1;
         }
 
+        #region Comment
+        /*
+         * Here we have created GetRow<T> extension method when we click Edit button or double click on GridView it will get us our Focused Row if we clicked elsewhere then it will give us error so when it gives us Row of GridView then on BaseListForm we will convert into BaseEntity because later we will be needing Value of it on our ButtonEdit control amd beside we need its Id number in order to save on our Database
+         * 
+         */
+        #endregion
+        public static T GetRow<T>(this GridView table,bool giveMessage=true)
+        {
+            if (table.FocusedRowHandle>-1)
+            {
+                return (T)table.GetRow(table.FocusedRowHandle);
+            }
+            else
+            {
+                if (giveMessage)
+                    Messages.NotSelectedProperRow();
+            }
+            return default(T);
+        }
+
     }
 }

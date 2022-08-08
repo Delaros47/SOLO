@@ -1,5 +1,6 @@
 ﻿using Common.Enums;
 using StudentManagementUI.Forms.BaseForms;
+using StudentManagementUI.Show.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace StudentManagementUI.Show
      * 
      */
     #endregion
-    public class ShowEditForms<TForm> where TForm:BaseEditForm
+    public class ShowEditForms<TForm>:IBaseFormShow where TForm:BaseEditForm
     {
         #region Comment
         /*
