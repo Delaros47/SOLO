@@ -36,10 +36,10 @@ namespace StudentManagementUI.Show
             using (var frm = (TForm)Activator.CreateInstance(typeof(TForm)))
             {
                 frm.BaseProccessType = id > 0 ? ProccessType.EntityUpdate : ProccessType.EntityInsert;
-                frm.Id = id;
-                frm.MyBaseLoads();
+                frm.BaseEditId = id;
+                frm.MyBaseEditLoads();
                 frm.ShowDialog();
-                return frm.WillRefresh ? frm.Id : 0;
+                return frm.BaseWillRefresh ? frm.BaseEditId : 0;
             }
         }
 

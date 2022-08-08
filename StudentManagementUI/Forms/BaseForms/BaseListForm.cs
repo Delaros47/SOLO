@@ -37,12 +37,12 @@ namespace StudentManagementUI.Forms.BaseForms
 
         protected IBaseFormShow BaseFormShow;
         protected FormType BaseFormType;
-        protected internal GridView Table;
-        protected bool ShowActivePassiveList = true;
-        protected internal bool MultiSelect;
+        protected internal GridView BaseTable;
+        protected bool BaseShowActivePassiveList = true;
+        protected internal bool BaseMultiSelect;
         protected internal BaseEntity SelectedEntity;
         protected IBaseBll BaseBll;
-        protected ControlNavigator Navigator;
+        protected ControlNavigator BaseNavigator;
 
         public BaseListForm()
         {
@@ -73,8 +73,8 @@ namespace StudentManagementUI.Forms.BaseForms
             }
 
             //Table Events
-            Table.DoubleClick += Table_DoubleClick;
-            Table.KeyDown += Table_KeyDown;
+            BaseTable.DoubleClick += Table_DoubleClick;
+            BaseTable.KeyDown += Table_KeyDown;
             //Form Events
         }
         #region Comment
@@ -87,8 +87,8 @@ namespace StudentManagementUI.Forms.BaseForms
         {
             FillMyVariables();
             EventsLoad();
-            Table.OptionsSelection.MultiSelect = MultiSelect;
-            Navigator.NavigatableControl = Table.GridControl;
+            BaseTable.OptionsSelection.MultiSelect = BaseMultiSelect;
+            BaseNavigator.NavigatableControl = BaseTable.GridControl;
             Cursor.Current = Cursors.WaitCursor;
             EntityRefresh();
             Cursor.Current = DefaultCursor;
@@ -154,7 +154,7 @@ namespace StudentManagementUI.Forms.BaseForms
 
         private void EntitySelect()
         {
-            if (MultiSelect)
+            if (BaseMultiSelect)
             {
 
             }
@@ -166,7 +166,7 @@ namespace StudentManagementUI.Forms.BaseForms
                  * 
                  */
                 #endregion
-                SelectedEntity = Table.GetRow<BaseEntity>();
+                SelectedEntity = BaseTable.GetRow<BaseEntity>();
             }
             #region Comment
             /*
@@ -269,7 +269,7 @@ namespace StudentManagementUI.Forms.BaseForms
                  * And also we will create an extension method in GeneralFunctions so it will also prevent if we focus on not Row other part of GridView it will give message as well
                  */
                 #endregion
-                ShowEditForms(Table.GetRowId());
+                ShowEditForms(BaseTable.GetRowId());
             }
             else if (e.Item==btnDelete)
             {
@@ -294,13 +294,13 @@ namespace StudentManagementUI.Forms.BaseForms
                  * Here Whenever we click on our Columns button it will show down right side CustomizationForm we could move or move back our columns to our GridView
                  */
                 #endregion
-                if (Table.CustomizationForm==null)
+                if (BaseTable.CustomizationForm==null)
                 {
-                    Table.ShowCustomization();
+                    BaseTable.ShowCustomization();
                 }
                 else
                 {
-                    Table.HideCustomization();
+                    BaseTable.HideCustomization();
                 }
             }
             else if (e.Item==btnPrint)
@@ -313,7 +313,7 @@ namespace StudentManagementUI.Forms.BaseForms
             }
             else if (e.Item==btnActivePassiveList)
             {
-                ShowActivePassiveList = !ShowActivePassiveList;
+                BaseShowActivePassiveList = !BaseShowActivePassiveList;
                 EntityActivePassiveListCaption();
             }
 
