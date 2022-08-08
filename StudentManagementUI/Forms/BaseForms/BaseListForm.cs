@@ -319,8 +319,6 @@ namespace StudentManagementUI.Forms.BaseForms
 
             Cursor.Current = DefaultCursor;
 
-
-
         }
 
         
