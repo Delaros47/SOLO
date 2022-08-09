@@ -4,6 +4,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using Model.Entities.Base;
+using StudentManagementUI.Functions;
 using StudentManagementUI.Show.Interfaces;
 using StudentManagementUI.UserControls.Controls;
 using System;
@@ -37,8 +38,9 @@ namespace StudentManagementUI.Forms.BaseForms
         protected internal MyDataLayoutControl BaseDataLayoutControl;
         protected IBaseBll BaseBll;
         protected FormType BaseFormType;
-        protected BaseEntity OldEntity;
-        protected BaseEntity CurrentEntity;
+        protected BaseEntity BaseOldEntity;
+        protected BaseEntity BaseCurrentEntity;
+        protected bool BaseIsLoaded;
 
         public BaseEditForm()
         {
@@ -58,6 +60,16 @@ namespace StudentManagementUI.Forms.BaseForms
                         break;
                 }
             }
+
+            //FormEvents
+            Load += BaseEditForm_Load;
+        }
+
+        private void BaseEditForm_Load(object sender, EventArgs e)
+        {
+            BaseIsLoaded = true;
+            CreateUpdatedEntity();
+            BaseEditId = BaseProccessType.CreateId(BaseOldEntity);
         }
 
         #region Comment
@@ -66,8 +78,36 @@ namespace StudentManagementUI.Forms.BaseForms
          */
         #endregion
         protected internal virtual void MyBaseEditLoads() { }
-
+        #region Comment
+        /*
+         * Here we have created method call BindEntityToControl so it will empty here we will override in BaseEditForms so it will go get our OldEntity according to its Id then we will fill our textbox,ButtonEdit and ToggleSwitch there
+         */
+        #endregion
         protected virtual void BindEntityToControls() { }
+        #region Comment
+        /*
+         * Here we have created CreateUpdatedEntity and inside it we will put our CurrentEntity in EditForms
+         */
+        #endregion
+        protected virtual void CreateUpdatedEntity() { }
+        #region Comment
+        /*
+         * Here we have created ButtonsEnableState method so it simply will enables or disables our buttons in our EditForms when we make changes on our EditForms
+         * Here if it is not IsLoaded means that if still we didn't open our EditForms or loaded then return nothing if it is IsLoaded then we create some functions that it will enable or disables our Buttons in EditForms
+         */
+        #endregion
+        protected virtual void ButtonEnabledState() 
+        {
+            if (!BaseIsLoaded)
+            {
+                return;
+            }
+            else
+            {
+                GeneralFunctions.ButtonEnabledState<BaseEntity>(btnNew, btnSave, btnUndo, btnDelete, BaseOldEntity, BaseCurrentEntity);
+            }
+
+        }
 
         private void Button_ItemClick(object sender, ItemClickEventArgs e)
         {

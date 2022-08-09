@@ -49,6 +49,7 @@ namespace StudentManagementUI.Forms.SchoolForms
          * Here we have overrode our EntityRefresh method and we set our Table(GridView) in GridControl and DataSource so since SchoolBll is Bll so we have to cast it in order to reach its methods there and inside the List we will not write like that (x=>x.State==true) each time instead we will create class for our filters
          * FilterFunctions.Filter<School>(ShowActiveList) Here we have created FilterFunctions class inside it we have returns whenever our State is true and false we don't need to write each time like this (x=>x.State==true) or false that's why we have created Generic method inside the class
          * ShowActiveList comes from BaseListForm there as default value we assgined true but if it is false then it will list Passive List if we don't change then it will list Active List
+         * The main thing for us that we have used filter parameters on List() function for this one
          */
         #endregion
         protected override void EntityRefresh()

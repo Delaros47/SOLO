@@ -24,13 +24,13 @@ namespace StudentManagementUI.Forms.BaseForms
         #region Comment
         /*
          * Here we have declared IBaseFormShow interface from other Forms we will be passing EditForms here since interface keeps referances
-         * FormType what kind of forms we use we want to know of couse in delete method here also we want to get Descriptio attribute from it as well in other things we will be using it
+         * FormType what kind of forms we use we want to know of couse in delete method here also we want to get Description attribute from it as well in other things we will be using it
          * Here GridView Table; we will be sending our GridView from other Forms here because we will do a lot of things on our GridView firstly when we Edit button it will be opened as EditForms we will be updating data
-         * Here ShowActiveList = true; whenever we click on our Active Passive List so as default we set it true but when we click it that it will be set false and will list passive records
-         * bool MultiSelect; means that in our some GridView we could select multiply columns and save them all, they will have checkbox in the beggining
-         * BaseEntity SelectedEntity; Here whenever we choose from ButtonEdit and our GridView opens then we double click or Select button then it will save our Row into BaseEntity SelectedEntity;
-         * IBaseBll Bll; Here we send all our Business codes here we can delete,update insert or list any entity here thanks to IBaseBll interface it will get all kind of Business codes such CityBll(); DistrictBll(); becuase these classes inherited fom BaseBll and BaseBll inherited from IBaseBll that means IBaseBll can hold their referances to reach it
-         * ControlNavigator Navigator; Here we will be sending from other forms Navigator here so it will be set here
+         * Here BaseShowActivePassiveList = true; whenever we click on our Active Passive List so as default we set it true but when we click it that it will be set false and will list passive records
+         * bool BaseMultiSelect; means that in our some GridView we could select multiply columns and save them all, they will have checkbox in the beggining
+         * BaseEntity BaseSelectedEntity; Here whenever we choose from ButtonEdit and our GridView opens then we double click or Select button then it will save our Row into BaseEntity BaseSelectedEntity;
+         * IBaseBll BaseBll; Here we send all our Business codes here we can delete,update insert or list any entity here thanks to IBaseBll interface it will get all kind of Business codes such CityBll(); DistrictBll(); becuase these classes inherited from BaseBll and BaseBll inherited from IBaseBll that means IBaseBll can hold their referances to reach it
+         * ControlNavigator BaseNavigator; Here we will be sending from other forms Navigator here so it will be set here
          * 
          */
         #endregion
@@ -40,7 +40,7 @@ namespace StudentManagementUI.Forms.BaseForms
         protected internal GridView BaseTable;
         protected bool BaseShowActivePassiveList = true;
         protected internal bool BaseMultiSelect;
-        protected internal BaseEntity SelectedEntity;
+        protected internal BaseEntity BaseSelectedEntity;
         protected IBaseBll BaseBll;
         protected ControlNavigator BaseNavigator;
 
@@ -79,7 +79,7 @@ namespace StudentManagementUI.Forms.BaseForms
         }
         #region Comment
         /*
-         * This MyBaseListLoads will run in other ListForms in order to set our values
+         * This MyBaseListLoads will run in MainForm whenever we try to open a new ListForm this method will function and all Methods,Variables and Events will be loaded normally
          * We set MultiSelect and Navigator on MyBaseListLoads() and also it will refresh our Table (GridView) while we are running it
          */
         #endregion
@@ -115,8 +115,6 @@ namespace StudentManagementUI.Forms.BaseForms
                 case Keys.Escape:
                     Close();
                     break;
-                default:
-                    break;
             }
         }
 
@@ -131,7 +129,11 @@ namespace StudentManagementUI.Forms.BaseForms
             EntitySelectProccessType();
             Cursor.Current = DefaultCursor;
         }
-
+        #region Comment
+        /*
+         * Here is whenever we double click on our Table(GridView) but if double click or Enter first one we selecting values into ButtonEdit second one is for opening EditForms with values
+         */
+        #endregion
         private void EntitySelectProccessType()
         {
             #region Comment
@@ -152,6 +154,11 @@ namespace StudentManagementUI.Forms.BaseForms
             }
         }
 
+        #region Comment
+        /*
+         * Here whenever we select our Table(GridView) sometimes we are able to select multiple rows and its values so here we put condition for checking for that
+         */
+        #endregion
         private void EntitySelect()
         {
             if (BaseMultiSelect)
@@ -166,7 +173,7 @@ namespace StudentManagementUI.Forms.BaseForms
                  * 
                  */
                 #endregion
-                SelectedEntity = BaseTable.GetRow<BaseEntity>();
+                BaseSelectedEntity = BaseTable.GetRow<BaseEntity>();
             }
             #region Comment
             /*

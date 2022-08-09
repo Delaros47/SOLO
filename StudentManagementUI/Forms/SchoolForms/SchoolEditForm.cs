@@ -43,13 +43,18 @@ namespace StudentManagementUI.Forms.SchoolForms
         #endregion
         protected internal override void MyBaseEditLoads()
         {
-            OldEntity = BaseProccessType == ProccessType.EntityInsert ? new SchoolS() : ((SchoolBll)BaseBll).Single(FilterFunctions.Filter<School>(BaseEditId));
+            BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new SchoolS() : ((SchoolBll)BaseBll).Single(FilterFunctions.Filter<School>(BaseEditId));
             BindEntityToControls();
         }
 
+        #region Comment
+        /*
+         * Here when we open our EditForms it sets BaseOldEntity then since it is single entity we cast it into SchoolS cause we need id,privatecode,SchoolName ToogleSwitch,State and so on we have to use our SchoolS not School because School entity doesn't have CityName and DistrictName
+         */
+        #endregion
         protected override void BindEntityToControls()
         {
-            var entity = (SchoolS)OldEntity;
+            var entity = (SchoolS)BaseOldEntity;
             txtPrivateCode.Text = entity.PrivateCode;
             txtSchoolName.Text = entity.SchoolName;
             btnCityName.Id = entity.CityId;
@@ -58,6 +63,27 @@ namespace StudentManagementUI.Forms.SchoolForms
             btnDistrictName.Text = entity.DistrictName;
             tglState.IsOn = entity.State;
             txtDescription.Text = entity.Description;
+        }
+
+        #region Comment
+        /*
+         * Here CreateUpdatedEntity will get current our entities and save into BaseCurrentEntity so then we could send it to database after we compare to BaseOldEntity
+         */
+        #endregion
+        protected override void CreateUpdatedEntity()
+        {
+            BaseCurrentEntity = new School
+            {
+                Id = BaseEditId,
+                PrivateCode = txtPrivateCode.Text,
+                SchoolName = txtSchoolName.Text,
+                CityId = Convert.ToInt64(btnCityName.Id),
+                DistrictId = Convert.ToInt64(btnDistrictName.Id),
+                State = tglState.IsOn,
+                Description = txtDescription.Text
+            };
+
+            ButtonEnabledState();
         }
 
     }
