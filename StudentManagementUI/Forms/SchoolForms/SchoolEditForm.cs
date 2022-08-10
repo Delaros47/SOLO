@@ -43,8 +43,17 @@ namespace StudentManagementUI.Forms.SchoolForms
         #endregion
         protected internal override void MyBaseEditLoads()
         {
+            
             BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new SchoolS() : ((SchoolBll)BaseBll).Single(FilterFunctions.Filter<School>(BaseEditId));
             BindEntityToControls();
+            #region Comment
+            /*
+             * Here we will check our ProccessType if it is not equal Insert then it returns because we don't need to generate Private Code if ProccessType is EntityInsert then it will generate the Private code and our cursor will be focused on txtSchoolName
+             */
+            #endregion
+            if (BaseProccessType!=ProccessType.EntityInsert) return;
+            txtPrivateCode.Text = ((SchoolBll)BaseBll).GeneratePrivateCode();
+            txtSchoolName.Focus();
         }
 
         #region Comment

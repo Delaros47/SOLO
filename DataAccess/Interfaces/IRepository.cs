@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -70,6 +71,12 @@ namespace DataAccess.Interfaces
          */
         #endregion
         IQueryable<TResult> Select<TResult>(Expression<Func<T, bool>> filter,Expression<Func<T,TResult>> selector);
-        
+        #region Comment
+        /*
+         * Here we created interface method that it will generate our Private Code automaticlly
+         */
+        #endregion
+        string GeneratePrivateCode(FormType formType, Expression<Func<T, string>> filter, Expression<Func<T, bool>> where = null);
+
     }
 }

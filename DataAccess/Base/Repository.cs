@@ -1,4 +1,6 @@
-﻿using DataAccess.Interfaces;
+﻿using Common.Enums;
+using Common.Functions;
+using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -153,7 +155,87 @@ namespace DataAccess.Base
             return filter == null ? _dbSet.Select(selector) : _dbSet.Where(filter).Select(selector);
         }
 
-      
+        #region Comment
+        /*
+         * Here we have created GeneratePrivateCode method that it will generate a Private Code for our EditForms
+         */
+        #endregion
+        public string GeneratePrivateCode(FormType formType, Expression<Func<T, string>> filter, Expression<Func<T, bool>> where = null)
+        {
+            #region Comment
+            /*
+             * Here our FirstPrivateCode method it will run when we want to create a first Private Code for any Entity and then it will go to our FormType method and it will run our extension mehod ToName then get the Attribute Description to us then split If let's say that it School Record then it will get School only then in the end will insert -000001 to it School-000001 sometimes our FormType name can be longer than two word such as School Group Record then it will take only 
+             * School Group-000001
+             */
+            #endregion
+            string FirstPrivateCode()
+            {
+                string privateCode = null;
+                var formTypeName = formType.ToName().Split(' ');
+
+                for (int i = 0; i < formTypeName.Length - 1; i++)
+                {
+                    privateCode += formTypeName[i];
+                    if ((i + 1) == 2)
+                    {
+                        privateCode += " " + formTypeName[i];
+                        break;
+                    }
+
+                }
+
+                return privateCode + "-000001";
+
+            }
+
+            #region Comment
+            /*
+             * Here we have created NotFirstPrivateCode whenever we have already Private Code on our database so it will be increase by 1 then it returns to us our value
+             */
+            #endregion
+            string NotFirstPrivateCode(string privateCode)
+            {
+                string digits = null;
+                string value = null;
+                foreach (var character in privateCode)
+                {
+                    if (char.IsDigit(character))
+                    {
+                        digits += character;
+                    }
+                    else
+                    {
+                        value += character;
+                    }
+                }
+                var oldDigits = digits;
+                var newDigits = (int.Parse(digits) + 1).ToString();
+                int minus = (oldDigits.Length) - (newDigits.Length);
+                if (minus>0)
+                {
+                    for (int i = 1; i <minus; i++)
+                    {
+                       newDigits = "0" +newDigits;
+                    }
+                }
+
+                return value + newDigits;
+
+            }
+
+            #region Comment
+            /*
+             * Here first if we have any PrivateCode that it will return us as maxPrivateCode if not then our var will be null if it is null then here our condition return maxPrivateCode == null ? FirstPrivateCode() : NotFirstPrivateCode(maxPrivateCode); it will generate First Time a new with method called FirstPrivateCode();
+             */
+            #endregion
+            var maxPrivateCode = where == null ? _dbSet.Max(filter) : _dbSet.Where(where).Max(filter);
+            return maxPrivateCode == null ? FirstPrivateCode() : NotFirstPrivateCode(maxPrivateCode);
+
+        }
+
+
+
+
         private bool _disposedValue;
         protected virtual void Dispose(bool disposing)
         {

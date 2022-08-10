@@ -1,5 +1,6 @@
 ﻿using Business.Interfaces;
 using Common.Enums;
+using Common.Message;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
@@ -41,6 +42,7 @@ namespace StudentManagementUI.Forms.BaseForms
         protected BaseEntity BaseOldEntity;
         protected BaseEntity BaseCurrentEntity;
         protected bool BaseIsLoaded;
+        protected bool CloseFormAfterInsert = true;
 
         public BaseEditForm()
         {
@@ -96,7 +98,7 @@ namespace StudentManagementUI.Forms.BaseForms
          * Here if it is not IsLoaded means that if still we didn't open our EditForms or loaded then return nothing if it is IsLoaded then we create some functions that it will enable or disables our Buttons in EditForms
          */
         #endregion
-        protected virtual void ButtonEnabledState() 
+        protected virtual void ButtonEnabledState()
         {
             if (!BaseIsLoaded)
             {
@@ -139,9 +141,63 @@ namespace StudentManagementUI.Forms.BaseForms
 
         }
 
-        private void EntitySave(bool v)
+        private bool EntitySave(bool editFormClosing)
         {
+            bool SaveProccess()
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                switch (BaseProccessType)
+                {
+                    case ProccessType.EntityInsert:
+                        if (EntityInsert())
+                            return ProccessAfterInsert();
+                        break;
+                    case ProccessType.EntityUpdate:
+                        if(EntityUpdate())
+                            return ProccessAfterInsert();
+                        break;
+                }
 
+                bool ProccessAfterInsert()
+                {
+                    BaseOldEntity = BaseCurrentEntity;
+                    BaseWillRefresh = true;
+                    ButtonEnabledState();
+
+                    if (CloseFormAfterInsert)
+                        Close();
+                    else
+                        BaseProccessType = BaseProccessType == ProccessType.EntityInsert ? ProccessType.EntityUpdate : BaseProccessType;
+                    return true;
+                }
+
+                return false;
+            }
+            var result = editFormClosing ? Messages.EditFormClosingMessage() : Messages.SaveMessage();
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    return SaveProccess();
+                case DialogResult.No:
+                    if (editFormClosing)
+                        btnSave.Enabled = true;
+                    return true;
+                case DialogResult.Cancel:
+                    return true;
+            }
+
+            return false;
+        }
+
+        protected virtual bool EntityUpdate()
+        {
+            return ((IBaseGeneralBll)BaseBll).Update(BaseOldEntity,BaseCurrentEntity);
+        }
+
+        protected virtual bool EntityInsert()
+        {
+            return ((IBaseGeneralBll)BaseBll).Insert(BaseCurrentEntity);
         }
 
         private void EntityUndo()

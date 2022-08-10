@@ -118,6 +118,16 @@ namespace Business.Base
 
         }
 
+        #region Comment
+        /*
+         * Here we have created method that it will generate our Private Code but first Expression our filter condition cause it will go to get the last one and increase by 1 then returns to us but where Expression is will be used in District because each city District will start from District-00001 for Mardin,Antalya,İzmir and so on then we will be used that where expression currently we set it as null
+         */
+        #endregion
+        protected string BaseGeneratePrivateCode(FormType formType,Expression<Func<T,string>> filter, Expression<Func<T,bool>> where=null)
+        {
+            GeneralFunctions.CreateUnitOfWork<T, TContext>(ref _uow);
+            return _uow.Rep.GeneratePrivateCode(FormType.School,x=>x.PrivateCode);
+        }
 
 
         #region Comment

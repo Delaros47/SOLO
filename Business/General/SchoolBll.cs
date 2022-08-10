@@ -1,4 +1,5 @@
 ﻿using Business.Base;
+using Business.Interfaces;
 using Common.Enums;
 using Data.Contexts;
 using Model.DTO;
@@ -19,7 +20,7 @@ namespace Business.General
      * Here each our entity we will be creating class and we have implemented from BaseBll and we have passed the entity as School and Context is StudentManagementContext and other two contructors from BaseBll later we will be reaching them
      */
     #endregion
-    public class SchoolBll : BaseBll<School, StudentManagementContext>
+    public class SchoolBll : BaseBll<School, StudentManagementContext>,IBaseGeneralBll
     {
         public SchoolBll()
         {
@@ -95,5 +96,9 @@ here X is our School and returns bool and we query from School (filter) and we a
             return BaseDelete(entity, FormType.School);
         }
 
+        public string GeneratePrivateCode()
+        {
+            return BaseGeneratePrivateCode(FormType.School, x => x.PrivateCode);
+        }
     }
 }
