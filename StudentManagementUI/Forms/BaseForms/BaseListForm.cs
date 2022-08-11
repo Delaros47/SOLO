@@ -188,9 +188,10 @@ namespace StudentManagementUI.Forms.BaseForms
         /*
          * Here ShowEdit Form will open EditForms if id is -1 then it will open an empty EditForm if not then it will set the Id in EditForms in order to be able to make updates there
          * We have create interface IBaseFormShow FormShow; so simply we will be passing all our EditForms here it keeps referances then our ShowEditForm will be functioned in New,Edit buttons and in double click Gridview 
+         * Here we have changed the modifier of our ShowEditForms because in entity such District in some entities we required params[] we have to override there in order to use alternative method we need to pass params[] parameters from the constructor now we have to make another method in ShowEditForms but this time we will be passing with params[]
          */
         #endregion
-        private void ShowEditForms(long id)
+        protected virtual void ShowEditForms(long id)
         {
             var result = BaseFormShow.ShowEditDialogForm(BaseFormType, id);
         }

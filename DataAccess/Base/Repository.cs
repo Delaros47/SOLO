@@ -213,7 +213,7 @@ namespace DataAccess.Base
                 int minus = (oldDigits.Length) - (newDigits.Length);
                 if (minus>0)
                 {
-                    for (int i = 1; i <minus; i++)
+                    for (int i = 1; i <=minus; i++)
                     {
                        newDigits = "0" +newDigits;
                     }

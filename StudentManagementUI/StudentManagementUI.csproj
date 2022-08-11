@@ -74,6 +74,30 @@
     <Compile Include="Forms\BaseForms\BaseListForm.Designer.cs">
       <DependentUpon>BaseListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CityForms\CityEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityEditForm.Designer.cs">
+      <DependentUpon>CityEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityListForm.Designer.cs">
+      <DependentUpon>CityListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DistrictForms\DistrictEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DistrictForms\DistrictEditForm.Designer.cs">
+      <DependentUpon>DistrictEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DistrictForms\DistrictListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DistrictForms\DistrictListForm.Designer.cs">
+      <DependentUpon>DistrictListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +211,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForms\BaseListForm.resx">
       <DependentUpon>BaseListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CityForms\CityEditForm.resx">
+      <DependentUpon>CityEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CityForms\CityListForm.resx">
+      <DependentUpon>CityListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DistrictForms\DistrictEditForm.resx">
+      <DependentUpon>DistrictEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DistrictForms\DistrictListForm.resx">
+      <DependentUpon>DistrictListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -413,5 +449,6 @@
   <ItemGroup>
     <None Include="Resources\exporttotxt_32x32.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

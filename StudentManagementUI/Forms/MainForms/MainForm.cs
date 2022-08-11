@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StudentManagementUI.Forms.CityForms;
 
 namespace StudentManagementUI.Forms.MainForms
 {
@@ -45,6 +46,10 @@ namespace StudentManagementUI.Forms.MainForms
             if (e.Item==btnSchools)
             {
                 ShowListForms<SchoolListForm>.ShowListForm(FormType.School);
+            }
+            else if (e.Item==btnCities)
+            {
+                ShowListForms<CityListForm>.ShowListForm(FormType.City);
             }
         }
     }

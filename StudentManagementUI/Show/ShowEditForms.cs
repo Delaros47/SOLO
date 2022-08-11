@@ -43,5 +43,23 @@ namespace StudentManagementUI.Show
             }
         }
 
+        #region Comment
+        /*
+         * Here we have created another ShowEditDiaglogForm but this time we pass params[] as object because when we are in our District then we need CityId in order to add a new District
+         */
+        #endregion
+        public long ShowEditDialogForm(FormType formType, long id,params object[] prm)
+        {
+            
+            using (var frm = (TForm)Activator.CreateInstance(typeof(TForm),prm))
+            {
+                frm.BaseProccessType = id > 0 ? ProccessType.EntityUpdate : ProccessType.EntityInsert;
+                frm.BaseEditId = id;
+                frm.MyBaseEditLoads();
+                frm.ShowDialog();
+                return frm.BaseWillRefresh ? frm.BaseEditId : 0;
+            }
+        }
+
     }
 }
