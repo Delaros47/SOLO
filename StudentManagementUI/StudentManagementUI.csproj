@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Functions\FilterFunctions.cs" />
     <Compile Include="Functions\GeneralFunctions.cs" />
+    <Compile Include="Functions\SelectFunctions.cs" />
     <Compile Include="Interfaces\IStatusBarDescription.cs" />
     <Compile Include="Interfaces\IStatusBarShortcut.cs" />
     <Compile Include="Program.cs" />

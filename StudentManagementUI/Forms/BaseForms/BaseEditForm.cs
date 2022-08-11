@@ -76,6 +76,12 @@ namespace StudentManagementUI.Forms.BaseForms
 
         #region Comment
         /*
+         * Here our DoSelection will be overrode in our EditForms so there we will be catching from ListForms to our ButtonEdits Id and Values so during the selection but we have to create the class in Functions here we will do nothing just leave there 
+         */
+        #endregion
+        protected virtual void DoSelection(object sender) { }
+        #region Comment
+        /*
          * Here is our virtual method simply will be override in other EditForms
          */
         #endregion

@@ -86,5 +86,15 @@ namespace StudentManagementUI.Forms.SchoolForms
             ButtonEnabledState();
         }
 
+        #region Comment
+        /*
+         * Here we have overrode our DoSelection and now we will be creating a class named SelectFunctions inside Functions folder there we will be catching Id and Value from Table (GridView) then we will be adding to our ButtonEdits
+         */
+        #endregion
+        protected override void DoSelection(object sender)
+        {
+              
+        }
+
     }
 }
