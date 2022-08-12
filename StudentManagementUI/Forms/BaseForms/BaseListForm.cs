@@ -43,6 +43,7 @@ namespace StudentManagementUI.Forms.BaseForms
         protected internal BaseEntity BaseSelectedEntity;
         protected IBaseBll BaseBll;
         protected ControlNavigator BaseNavigator;
+        protected internal long? BaseListSelectedId;
 
         public BaseListForm()
         {

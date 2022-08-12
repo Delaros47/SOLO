@@ -53,6 +53,7 @@
             this.ribbonControl.SearchEditItem.EditWidth = 150;
             this.ribbonControl.SearchEditItem.Id = -5000;
             this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonControl.Size = new System.Drawing.Size(1190, 102);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // longNavigator
@@ -190,7 +191,7 @@
             this.colDescription.StatusBarShortcutDescription = null;
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 4;
-            this.colDescription.Width = 400;
+            this.colDescription.Width = 450;
             // 
             // SchoolListForm
             // 

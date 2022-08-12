@@ -160,7 +160,7 @@
             this.colDescription.StatusBarShortcutDescription = null;
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 2;
-            this.colDescription.Width = 400;
+            this.colDescription.Width = 450;
             // 
             // CityListForm
             // 

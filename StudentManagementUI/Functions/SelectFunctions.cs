@@ -1,4 +1,7 @@
 ﻿using Common.Enums;
+using Model.Entities;
+using StudentManagementUI.Forms.CityForms;
+using StudentManagementUI.Show;
 using StudentManagementUI.UserControls.Controls;
 using System;
 using System.Collections.Generic;
@@ -40,10 +43,36 @@ namespace StudentManagementUI.Functions
         }
 
 
-
+        #region Comment
+        /*
+         * Here we have two method one with one ButtonEdit parameters another with two and with switch case control we identify it is btnCityName or not if it is we set our Id and Value inside our btnCityName ButtonEdit and since District is different because we need cityid and its value
+         */
+        #endregion
         public void SelectionProccess()
         {
-
+            switch (_btnEdit.Name)
+            {
+                case "btnCityName":
+                    {
+                        var entity = (City)ShowListForms<CityListForm>.ShowDialogListForm(_formType, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.CityName;
+                        }
+                    }
+                    break;
+                case "btnDistrictName":
+                    {
+                        var entity = (District)ShowListForms<CityListForm>.ShowDialogListForm(_formType, _btnEdit.Id,_prmEdit.Id,_prmEdit.Text);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.DistrictName;
+                        }
+                    }
+                    break;
+            }
         }
 
 
@@ -51,10 +80,14 @@ namespace StudentManagementUI.Functions
 
 
 
-
+        #region Comment
+        /*
+         * Here we dispose our class from the memory
+         */
+        #endregion
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
     }
 }

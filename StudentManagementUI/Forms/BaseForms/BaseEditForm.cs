@@ -3,19 +3,10 @@ using Common.Enums;
 using Common.Message;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraEditors;
 using Model.Entities.Base;
 using StudentManagementUI.Functions;
-using StudentManagementUI.Show.Interfaces;
 using StudentManagementUI.UserControls.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentManagementUI.Forms.BaseForms
@@ -30,13 +21,15 @@ namespace StudentManagementUI.Forms.BaseForms
          * MyDataLayoutControl BaseDataLayoutControl; Here in order to use events on EditForms we have send dataLayoutControl to BaseEditForm since all controls are inside dataLayoutControl
          * IBaseBll BaseBll; here we will make update,delete and insert
          * Here we have BaseEntity OldEntity; and BaseEntity CurrentEntity; on our EditForms if we try to update an entity first on EditForm first it will get our OldEntity in our EditForms then if we try to click the save then it will save current entity into CurrentEntity then it will compare both of them if there are any changes then it will save and it returns id into ListForm and it will be focused on its Row 
-         * IsLoaded is that whenever we open our EditForms that if we open and loads the Form is true if not then it is false
+         * BaseIsLoaded is that whenever we open our EditForms that if we open and loads the Form is true if not then it is false
+         * MyDataLayoutControl[] BaseDataLayoutControls; Here actually main thing we should send our events from DataLayoutControl to our BaseEditForm so sometimes our Form can contain multiply DataLayoutControls so that's why we have declared as array also 
          */
         #endregion
         protected internal ProccessType BaseProccessType;
         protected internal long BaseEditId;
         protected internal bool BaseWillRefresh;
         protected internal MyDataLayoutControl BaseDataLayoutControl;
+        protected internal MyDataLayoutControl[] BaseDataLayoutControls;
         protected IBaseBll BaseBll;
         protected FormType BaseFormType;
         protected BaseEntity BaseOldEntity;
@@ -65,6 +58,94 @@ namespace StudentManagementUI.Forms.BaseForms
 
             //FormEvents
             Load += BaseEditForm_Load;
+
+            #region Comment
+            /*
+             * Here we have created a method called ControlEvents that it will simply run our own Events on EditForms such as KeyDown here control.KeyDown += Control_KeyDown; in our EditForm which componant we press that KeyDown event will work and KeyDown is only one press on the componant
+             */
+            #endregion
+            void ControlEvents(Control control)
+            {
+                control.KeyDown += Control_KeyDown;
+                switch (control)
+                {
+                    case MyButtonEdit edit:
+                        edit.IdChanged += Control_IdChanged;
+                        edit.DoubleClick += Control_DoubleClick;
+                        edit.ButtonClick += Control_ButtonClick;
+                        break;
+                }
+            }
+
+            if (BaseDataLayoutControls==null)
+            {
+                if (BaseDataLayoutControl==null) return;
+                    foreach (Control ctrl in BaseDataLayoutControl.Controls)
+                        ControlEvents(ctrl);  
+            }
+            else
+            {
+                foreach (var layout in BaseDataLayoutControls)
+                    foreach (Control ctrl in layout.Controls)
+                        ControlEvents(ctrl);
+            }
+
+
+
+        }
+        #region Comment
+        /*
+         * Here whenever our ButtonEdit event is button click then it will invoke DoSelection method with sender parameters then we will be getting Id and Value on our EditForms
+         */
+        #endregion
+        private void Control_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            DoSelection(sender);
+        }
+        #region Comment
+        /*
+         * Here whenever our ButtonEdit event is double click then it will invoke DoSelection method with sender parameters then we will be getting Id and Value on our EditForms
+         */
+        #endregion
+        private void Control_DoubleClick(object sender, EventArgs e)
+        {
+            DoSelection(sender);
+        }
+
+        private void Control_IdChanged(object sender, IdChangedEventArgs e)
+        {
+
+        }
+
+        #region Comment
+        /*
+         * Here whenever we press any key while we are on our controls in EditForms if we pressed on txtSchoolName.Text whenever we pressed Esc key then it will close our SchoolEditForm
+         */
+        #endregion
+        private void Control_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            if (sender is MyButtonEdit buttonEdit)
+            {
+                #region Comment
+                /*
+                 * Here whenever we press any key while we are on our controls in EditForms if we pressed on btnCityName EditButton control whenever we pressed Ctrl + Shift + Delete key then it will empty Id and EditValue in our btnCityName our SchoolEditForm
+                 */
+                #endregion
+                switch (e.KeyCode)
+                {
+                    case Keys.Delete when e.Control && e.Shift:
+                        buttonEdit.Id = null;
+                        buttonEdit.EditValue = null;
+                        break;
+                    case Keys.Down when e.Modifiers == Keys.Alt:
+                        DoSelection(buttonEdit);
+                        break;
+                }
+            }
         }
 
         private void BaseEditForm_Load(object sender, EventArgs e)
@@ -159,7 +240,7 @@ namespace StudentManagementUI.Forms.BaseForms
                             return ProccessAfterInsert();
                         break;
                     case ProccessType.EntityUpdate:
-                        if(EntityUpdate())
+                        if (EntityUpdate())
                             return ProccessAfterInsert();
                         break;
                 }
@@ -198,7 +279,7 @@ namespace StudentManagementUI.Forms.BaseForms
 
         protected virtual bool EntityUpdate()
         {
-            return ((IBaseGeneralBll)BaseBll).Update(BaseOldEntity,BaseCurrentEntity);
+            return ((IBaseGeneralBll)BaseBll).Update(BaseOldEntity, BaseCurrentEntity);
         }
 
         protected virtual bool EntityInsert()

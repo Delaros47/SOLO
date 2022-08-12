@@ -5,6 +5,7 @@ using System;
 using Model.DTO;
 using StudentManagementUI.Functions;
 using Model.Entities;
+using DevExpress.XtraEditors;
 
 namespace StudentManagementUI.Forms.SchoolForms
 {
@@ -34,7 +35,7 @@ namespace StudentManagementUI.Forms.SchoolForms
         #endregion
         protected internal override void MyBaseEditLoads()
         {
-            
+
             BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new SchoolS() : ((SchoolBll)BaseBll).Single(FilterFunctions.Filter<School>(BaseEditId));
             BindEntityToControls();
             #region Comment
@@ -42,7 +43,7 @@ namespace StudentManagementUI.Forms.SchoolForms
              * Here we will check our ProccessType if it is not equal Insert then it returns because we don't need to generate Private Code if ProccessType is EntityInsert then it will generate the Private code and our cursor will be focused on txtSchoolName
              */
             #endregion
-            if (BaseProccessType!=ProccessType.EntityInsert) return;
+            if (BaseProccessType != ProccessType.EntityInsert) return;
             txtPrivateCode.Text = ((SchoolBll)BaseBll).GeneratePrivateCode();
             txtSchoolName.Focus();
         }
@@ -88,12 +89,21 @@ namespace StudentManagementUI.Forms.SchoolForms
 
         #region Comment
         /*
-         * Here we have overrode our DoSelection and now we will be creating a class named SelectFunctions inside Functions folder there we will be catching Id and Value from Table (GridView) then we will be adding to our ButtonEdits
+         * Here we have overrode our DoSelection and now we will be creating a class named SelectFunctions inside Functions folder there we will be catching Id and Value from Table (GridView) then we will be adding to our ButtonEdits here we identify our sender it is a ButtonEdit or not if it is then we create instance from SelectFuntions then we pass our btnCityName,btnDistrictName ButtonEdits and we will fill our ButtonEdits with Id and Value
          */
         #endregion
         protected override void DoSelection(object sender)
         {
-              
+            if (!(sender is ButtonEdit)) return;
+            using (var select = new SelectFunctions())
+            {
+                if (sender == btnCityName)
+                    select.Selection(btnCityName);
+                if (sender == btnDistrictName)
+                    select.Selection(btnDistrictName,btnCityName);
+            }
+
+
         }
 
     }

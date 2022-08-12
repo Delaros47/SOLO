@@ -1,4 +1,5 @@
 ﻿using Common.Enums;
+using Model.Entities.Base;
 using StudentManagementUI.Forms.BaseForms;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,27 @@ namespace StudentManagementUI.Show
             frm.MdiParent = Form.ActiveForm;
             frm.MyBaseListLoads();
             frm.Show();
+        }
+
+        #region Comment
+        /*
+         * Here we have created method named ShowDialogListForm and simply we will be using when we select any List Froms from ButtonEdit controls and our ListForm is not mdiChild anymore it means that it will be open as Dialog like our EditForms
+         */
+        #endregion
+        public static BaseEntity ShowDialogListForm(FormType formType,long? selectedId,params object[] prm)
+        {
+            #region Comment
+            /*
+             * Here we have created instance from our ListForm and we set parameters our params while we create it in runtime then in BaseListForm we have created a nullable long variable we set it from here because when we set it then from there we can reach our Row on our Table (GridView) in the end if we selected anything then it returns to us as BaseEntity
+             */
+            #endregion
+            using (var frm = (TForm)Activator.CreateInstance(typeof(TForm),prm))
+            {
+                frm.BaseListSelectedId = selectedId;
+                frm.MyBaseListLoads();
+                frm.ShowDialog();
+                return frm.DialogResult == DialogResult.OK ? frm.BaseSelectedEntity : null;
+            }
         }
 
     }
