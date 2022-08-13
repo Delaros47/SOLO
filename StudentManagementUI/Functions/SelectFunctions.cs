@@ -1,6 +1,7 @@
 ﻿using Common.Enums;
 using Model.Entities;
 using StudentManagementUI.Forms.CityForms;
+using StudentManagementUI.Forms.DistrictForms;
 using StudentManagementUI.Show;
 using StudentManagementUI.UserControls.Controls;
 using System;
@@ -64,7 +65,7 @@ namespace StudentManagementUI.Functions
                     break;
                 case "btnDistrictName":
                     {
-                        var entity = (District)ShowListForms<CityListForm>.ShowDialogListForm(_formType, _btnEdit.Id,_prmEdit.Id,_prmEdit.Text);
+                        var entity = (District)ShowListForms<DistrictListForm>.ShowDialogListForm(_formType, _btnEdit.Id,_prmEdit.Id,_prmEdit.Text);
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;

@@ -77,7 +77,33 @@ namespace StudentManagementUI.Forms.BaseForms
             BaseTable.DoubleClick += Table_DoubleClick;
             BaseTable.KeyDown += Table_KeyDown;
             //Form Events
+
+            #region Comment
+            /*
+             * This our event whenever first shows us that and Shown event will function 
+             */
+            #endregion
+            Shown += BaseListForm_Shown;
+
         }
+
+        private void BaseListForm_Shown(object sender, EventArgs e)
+        {
+            BaseTable.Focus();
+            HideShowButtons();
+            HideShowColumn();
+        }
+
+        private void HideShowColumn()
+        {
+            
+        }
+
+        private void HideShowButtons()
+        {
+            
+        }
+
         #region Comment
         /*
          * This MyBaseListLoads will run in MainForm whenever we try to open a new ListForm this method will function and all Methods,Variables and Events will be loaded normally

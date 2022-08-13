@@ -30,8 +30,7 @@ namespace StudentManagementUI.Forms.DistrictForms
         #endregion
         protected internal override void MyBaseEditLoads()
         {
-            BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new District() : ((DistrictBll)BaseBll).Single(FilterFunctions.Filter<District>(BaseEditId));
-            Text = Text + $" ({_cityName}) ";
+            BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new District() : ((DistrictBll)BaseBll).Single(FilterFunctions.Filter<District>(BaseEditId));           
             BindEntityToControls();
             if (BaseProccessType != ProccessType.EntityInsert) return;
             txtPrivateCode.Text = ((DistrictBll)BaseBll).GeneratePrivateCode(x => x.CityId == _cityId);

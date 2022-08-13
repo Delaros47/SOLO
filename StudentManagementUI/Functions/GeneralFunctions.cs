@@ -3,11 +3,13 @@ using Common.Message;
 using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Grid;
 using Model.Entities.Base;
+using StudentManagementUI.UserControls.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StudentManagementUI.Functions
 {
@@ -160,12 +162,30 @@ namespace StudentManagementUI.Functions
                 var random = AddOneZero(new Random().Next(0, 100).ToString());
 
                 return year + month + day + hour + minute + second + millisecond + random;
-                
+
             }
 
             return proccessType == ProccessType.EntityUpdate ? selectedEntity.Id : long.Parse(Id());
 
-            
+
+        }
+
+        #region Comment
+        /*
+         * Here we will be using method that whenever we delete our btnCity Id and value then it will automaticlly disable the btnDistrict
+         */
+        #endregion
+        public static void ControlEnabledChange(this MyButtonEdit baseEdit, Control prmEdit)
+        {
+            switch (prmEdit)
+            {
+                case MyButtonEdit edt:
+                    edt.Enabled = baseEdit.Id.HasValue && baseEdit.Id>0;
+                    edt.Id = null;
+                    edt.EditValue = null;
+                    break;
+            }
+
         }
 
 

@@ -46,6 +46,7 @@ namespace StudentManagementUI.UserControls.Controls
                 if (oldValue == newValue) return;
                 _id = value;
                 IdChanged(this, new IdChangedEventArgs(oldValue, newValue));
+                EnableChange(this, EventArgs.Empty);
             }
         }
 
@@ -53,7 +54,12 @@ namespace StudentManagementUI.UserControls.Controls
         //Here we declare our own event so we use EventHandler generic and it asks ofr EventArgs so we enter our own class and this delegate{}; means it will prevent error whenever we have null value that's why we write it
         #endregion
         public event EventHandler<IdChangedEventArgs> IdChanged = delegate { };
-
+        #region Comment
+        /*
+         * We will be using this Event when we delete City value and Id so our District will be disabled and empty
+         */
+        #endregion
+        public event EventHandler EnableChange = delegate { };
 
     }
 

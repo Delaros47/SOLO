@@ -3,6 +3,7 @@ using Common.Enums;
 using Common.Message;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using Model.Entities.Base;
 using StudentManagementUI.Functions;
 using StudentManagementUI.UserControls.Controls;
@@ -71,17 +72,26 @@ namespace StudentManagementUI.Forms.BaseForms
                 {
                     case MyButtonEdit edit:
                         edit.IdChanged += Control_IdChanged;
+                        edit.EnableChange += Control_EnableChange;
                         edit.DoubleClick += Control_DoubleClick;
                         edit.ButtonClick += Control_ButtonClick;
+                        break;
+                    case BaseEdit edit:
+                        edit.EditValueChanged += Control_EditValueChanged;
                         break;
                 }
             }
 
-            if (BaseDataLayoutControls==null)
+            #region Comment
+            /*
+             * Here we will be sending our controls from DataLayoutControl to here we will catch their events since we have two DataLayoutControl one is array and another is only one (It will be used for Single DataLayoutControl in EditForms)
+             */
+            #endregion
+            if (BaseDataLayoutControls == null)
             {
-                if (BaseDataLayoutControl==null) return;
-                    foreach (Control ctrl in BaseDataLayoutControl.Controls)
-                        ControlEvents(ctrl);  
+                if (BaseDataLayoutControl == null) return;
+                foreach (Control ctrl in BaseDataLayoutControl.Controls)
+                    ControlEvents(ctrl);
             }
             else
             {
@@ -92,6 +102,19 @@ namespace StudentManagementUI.Forms.BaseForms
 
 
 
+        }
+
+        #region Comment
+        /*
+         * Here we have made our Event as virtual because we will be using it from some EditForms who are connected with each other such City and District when we have no value on City that District should be automaticlly disabled and we will be using it as override in other EditForms
+         */
+        #endregion
+        protected virtual void Control_EnableChange(object sender, EventArgs e) {  }
+
+        private void Control_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!BaseIsLoaded) return;
+            CreateUpdatedEntity();
         }
         #region Comment
         /*
@@ -114,7 +137,8 @@ namespace StudentManagementUI.Forms.BaseForms
 
         private void Control_IdChanged(object sender, IdChangedEventArgs e)
         {
-
+            if (!BaseIsLoaded) return;
+            CreateUpdatedEntity();
         }
 
         #region Comment

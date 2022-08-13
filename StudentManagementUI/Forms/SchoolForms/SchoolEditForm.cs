@@ -106,5 +106,16 @@ namespace StudentManagementUI.Forms.SchoolForms
 
         }
 
+        #region Comment
+        /*
+         * Here our overrode method will simply disable the District editbutton id and value whenever we delete the value from it
+         */
+        #endregion
+        protected override void Control_EnableChange(object sender, EventArgs e)
+        {
+            if (sender != btnCityName) return;
+            btnCityName.ControlEnabledChange(btnDistrictName);
+        }
+
     }
 }

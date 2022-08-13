@@ -39,7 +39,7 @@ namespace StudentManagementUI.Forms.DistrictForms
             BaseTable = table;
             BaseFormType = FormType.District;
             BaseNavigator = longNavigator.Navigator;
-
+            Text = Text + $" ({_cityName}) ";
         }
 
         protected override void EntityRefresh()
