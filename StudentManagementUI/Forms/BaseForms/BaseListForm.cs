@@ -34,7 +34,6 @@ namespace StudentManagementUI.Forms.BaseForms
          * 
          */
         #endregion
-
         protected IBaseFormShow BaseFormShow;
         protected FormType BaseFormType;
         protected internal GridView BaseTable;
@@ -92,6 +91,14 @@ namespace StudentManagementUI.Forms.BaseForms
             BaseTable.Focus();
             HideShowButtons();
             HideShowColumn();
+
+            #region Comment
+            /*
+             * Here will be focusing on our Table (GridView) after we insert or update on EditForms but our Table should be MdiChild and BaseListSelectedId should has value not null then we will run our extension method it will take our Id value on Id field will search for which Row was then it will be focused on it
+             */
+            #endregion
+            if (IsMdiChild || !BaseListSelectedId.HasValue) return;
+            BaseTable.RowFocus("Id", BaseListSelectedId);
         }
 
         private void HideShowColumn()

@@ -188,6 +188,24 @@ namespace StudentManagementUI.Functions
 
         }
 
+        #region Commnet
+        /*
+         * Here we have created an extension method simply we will be passing field which entity name here we mostly give Id on Table and value is our Id value very long value so it will go search one by one as it is counting then it will find our RowHandle value and rowhandle is which row in our Table (GridView) then when it finds and values are matching in the end it will be focused on our Row which we passed as parameters
+         */
+        #endregion
+        public static void RowFocus(this GridView table,string field,object value)
+        {
+            int rowHandle = 0;
+            for (int i = 0; i < table.RowCount; i++)
+            {
+                var result = table.GetRowCellValue(i, field);
+                if (value.Equals(result))
+                    rowHandle = i;
+            }
+
+            table.FocusedRowHandle = rowHandle;
+        }
+
 
 
     }
