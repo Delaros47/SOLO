@@ -94,7 +94,7 @@ namespace StudentManagementUI.Forms.BaseForms
 
             #region Comment
             /*
-             * Here will be focusing on our Table (GridView) after we insert or update on EditForms but our Table should be MdiChild and BaseListSelectedId should has value not null then we will run our extension method it will take our Id value on Id field will search for which Row was then it will be focused on it
+             * Here will be focusing on our Table (GridView) after we insert or update on EditForms but our Table shouldn't be MdiChild and BaseListSelectedId should has value not null,if both or condtion are true then it returns return if not the it will be focused on our Table Row then we will run our extension method it will take our Id value on Id field will search for which Row was then it will be focused on it
              */
             #endregion
             if (IsMdiChild || !BaseListSelectedId.HasValue) return;
@@ -230,6 +230,19 @@ namespace StudentManagementUI.Forms.BaseForms
             var result = BaseFormShow.ShowEditDialogForm(BaseFormType, id);
         }
 
+        
+        protected void ShowEditFormsDefault(long id)
+        {
+            if (id <= 0) return;
+            BaseShowActivePassiveList = true;
+            EntityActivePassiveListCaption();
+            BaseTable.RowFocus("Id",id);
+        }
+
+
+
+
+
         private void EntityDelete()
         {
             
@@ -251,11 +264,32 @@ namespace StudentManagementUI.Forms.BaseForms
         #endregion
         protected virtual void EntityRefresh() { }
 
-        
 
+        #region Comment
+        /*
+         * Here we have method named EntityActivePassiveListCaption() so it will change our ActivePassiveList caption
+         * Here btnActivePassiveList==null means that we in some form we will not be using AcctivePassiveList so if it is null then run our Refresh method and return
+         */
+        #endregion
         private void EntityActivePassiveListCaption()
         {
-            
+            if (btnActivePassiveList==null)
+            {
+                EntityRefresh();
+                return;
+            }
+
+            if (BaseShowActivePassiveList)
+            {
+                btnActivePassiveList.Caption = "Passive List";
+                BaseTable.ViewCaption = Text;
+            }
+            else
+            {
+                btnActivePassiveList.Caption = "Active List";
+                BaseTable.ViewCaption = Text + " - Passive List";
+            }
+            EntityRefresh();
         }
 
 
