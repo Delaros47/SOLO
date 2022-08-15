@@ -35,6 +35,8 @@ namespace StudentManagementUI.Forms.DistrictForms
             if (BaseProccessType != ProccessType.EntityInsert) return;
             txtPrivateCode.Text = ((DistrictBll)BaseBll).GeneratePrivateCode(x => x.CityId == _cityId);
             txtDistrictName.Focus();
+            Text = Text + $" ({_cityName}) ";
+
 
         }
 

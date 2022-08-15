@@ -228,6 +228,7 @@ namespace StudentManagementUI.Forms.BaseForms
         protected virtual void ShowEditForms(long id)
         {
             var result = BaseFormShow.ShowEditDialogForm(BaseFormType, id);
+            ShowEditFormsDefault(result);
         }
 
         
