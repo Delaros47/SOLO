@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Interfaces;
 
 namespace Business.General
 {
@@ -18,7 +19,7 @@ namespace Business.General
      * Here we will not be using IBaseGeneralBll interface the reason that District is not suitable for that 
      */
     #endregion
-    public class DistrictBll : BaseBll<District, StudentManagementContext>
+    public class DistrictBll : BaseBll<District, StudentManagementContext>, IBaseCommonBll
     {
         public DistrictBll() { }
 

@@ -103,12 +103,12 @@ namespace StudentManagementUI.Forms.BaseForms
 
         private void HideShowColumn()
         {
-            
+
         }
 
         private void HideShowButtons()
         {
-            
+
         }
 
         #region Comment
@@ -231,32 +231,44 @@ namespace StudentManagementUI.Forms.BaseForms
             ShowEditFormsDefault(result);
         }
 
-        
+        #region Comment
+        /*
+         * This is after we insert any value or update on EditForms then it in ShowEditForms it will return long id then we pass it to our ShowEditFormsDefault then if it it null then it returns if not it set our BaseShowActivePassiveList into true then it check our EntityActivePassiveListCaption(); in the end it focuses on our Table (GridView)
+         */
+        #endregion
         protected void ShowEditFormsDefault(long id)
         {
             if (id <= 0) return;
             BaseShowActivePassiveList = true;
             EntityActivePassiveListCaption();
-            BaseTable.RowFocus("Id",id);
+            BaseTable.RowFocus("Id", id);
         }
 
-
-
-
-
-        private void EntityDelete()
+        #region Comment
+        /*
+         * Here we have EntityDelete method that it will simply delete our entities still we might override it maybe in other forms we could use it not from the BaseForms
+         * var entity = BaseTable.GetRow<BaseEntity>(); here we get our entity but clicking on Tab
+         */
+        #endregion
+        protected virtual void EntityDelete()
         {
-            
+            var entity = BaseTable.GetRow<BaseEntity>();
+            if (entity == null) return;
+
+            if (!((IBaseCommonBll)BaseBll).Delete(entity)) return;
+            BaseTable.DeleteSelectedRows();
+            BaseTable.RowFocus(BaseTable.FocusedRowHandle);
+
         }
 
         private void EntityPrint()
         {
-           
+
         }
 
         private void EntityFilter()
         {
-            
+
         }
         #region Comment
         /*
@@ -274,7 +286,7 @@ namespace StudentManagementUI.Forms.BaseForms
         #endregion
         private void EntityActivePassiveListCaption()
         {
-            if (btnActivePassiveList==null)
+            if (btnActivePassiveList == null)
             {
                 EntityRefresh();
                 return;
@@ -348,30 +360,30 @@ namespace StudentManagementUI.Forms.BaseForms
                 #endregion
                 ShowEditForms(BaseTable.GetRowId());
             }
-            else if (e.Item==btnDelete)
+            else if (e.Item == btnDelete)
             {
                 EntityDelete();
             }
-            else if (e.Item==btnSelect)
+            else if (e.Item == btnSelect)
             {
                 EntitySelect();
             }
-            else if (e.Item==btnRefresh)
+            else if (e.Item == btnRefresh)
             {
                 EntityRefresh();
             }
-            else if (e.Item==btnFilter)
+            else if (e.Item == btnFilter)
             {
                 EntityFilter();
             }
-            else if (e.Item==btnColumns)
+            else if (e.Item == btnColumns)
             {
                 #region Comment
                 /*
                  * Here Whenever we click on our Columns button it will show down right side CustomizationForm we could move or move back our columns to our GridView
                  */
                 #endregion
-                if (BaseTable.CustomizationForm==null)
+                if (BaseTable.CustomizationForm == null)
                 {
                     BaseTable.ShowCustomization();
                 }
@@ -380,15 +392,15 @@ namespace StudentManagementUI.Forms.BaseForms
                     BaseTable.HideCustomization();
                 }
             }
-            else if (e.Item==btnPrint)
+            else if (e.Item == btnPrint)
             {
                 EntityPrint();
             }
-            else if (e.Item==btnExit)
+            else if (e.Item == btnExit)
             {
                 Close();
             }
-            else if (e.Item==btnActivePassiveList)
+            else if (e.Item == btnActivePassiveList)
             {
                 BaseShowActivePassiveList = !BaseShowActivePassiveList;
                 EntityActivePassiveListCaption();
@@ -398,6 +410,6 @@ namespace StudentManagementUI.Forms.BaseForms
 
         }
 
-        
+
     }
 }

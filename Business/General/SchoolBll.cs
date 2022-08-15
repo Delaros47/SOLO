@@ -20,7 +20,7 @@ namespace Business.General
      * Here each our entity we will be creating class and we have implemented from BaseBll and we have passed the entity as School and Context is StudentManagementContext and other two contructors from BaseBll later we will be reaching them
      */
     #endregion
-    public class SchoolBll : BaseBll<School, StudentManagementContext>,IBaseGeneralBll
+    public class SchoolBll : BaseBll<School, StudentManagementContext>,IBaseGeneralBll, IBaseCommonBll
     {
         public SchoolBll()
         {

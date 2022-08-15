@@ -101,7 +101,6 @@ namespace StudentManagementUI.Forms.BaseForms
             }
 
 
-
         }
 
         #region Comment
@@ -247,9 +246,17 @@ namespace StudentManagementUI.Forms.BaseForms
             }
         }
 
+        #region Comment
+        /*
+         * Here we have EntityDelete method that it will simply delete entity from the EditForms
+         * BaseWillRefresh = true; it will simply refresh our ListForm cause if refresh is true then it returns Id then from ShowEdit methods will simply refresh our ListForms then in the end it closes our EditForms
+         */
+        #endregion
         private void EntityDelete()
         {
-
+            if (!((IBaseCommonBll)BaseBll).Delete(BaseOldEntity)) return;
+            BaseWillRefresh = true;
+            Close();
         }
 
         private bool EntitySave(bool editFormClosing)

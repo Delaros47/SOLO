@@ -126,7 +126,7 @@ namespace Business.Base
         protected string BaseGeneratePrivateCode(FormType formType,Expression<Func<T,string>> filter, Expression<Func<T,bool>> where=null)
         {
             GeneralFunctions.CreateUnitOfWork<T, TContext>(ref _uow);
-            return _uow.Rep.GeneratePrivateCode(formType,x=>x.PrivateCode);
+            return _uow.Rep.GeneratePrivateCode(formType,x=>x.PrivateCode,where);
         }
 
 

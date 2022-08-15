@@ -54,12 +54,14 @@ namespace StudentManagementUI.Forms.DistrictForms
 
         #region Comment
         /*
-         * The reason we have overrode that we need to use the one with params so we could get CityId and CityName and CityId for adding a new Distirct and CityName is for showing in DistrictListForm caption in order for use to be undertood which city user is trying to add
+         * The reason we have overrode that we need to use the one with params so we could get CityId and CityName and CityId for adding a new Distirct and CityName is for showing in DistrictListForm caption in order for use to be undertood which city user is trying to add 
+         * Here we have used ShowEditFormsDefault(result); because since overrode our District so then for focuses we have to use ShowEditFormsDefault method it our Focuses should be running on DistrictListForm as well
          */
         #endregion
         protected override void ShowEditForms(long id)
         {
             var result = new ShowEditForms<DistrictEditForm>().ShowEditDialogForm(FormType.District, id, _cityId, _cityName);
+            ShowEditFormsDefault(result);
         }
 
     }

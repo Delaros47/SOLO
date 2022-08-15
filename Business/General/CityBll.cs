@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Business.General
 {
-    public class CityBll : BaseBll<City, StudentManagementContext>, IBaseGeneralBll
+    public class CityBll : BaseBll<City, StudentManagementContext>, IBaseGeneralBll,IBaseCommonBll
     {
         public CityBll() { }
 

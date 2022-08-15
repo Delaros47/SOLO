@@ -206,6 +206,20 @@ namespace StudentManagementUI.Functions
             table.FocusedRowHandle = rowHandle;
         }
 
+        #region Comment
+        /*
+         * Here we have created RowFocus for focusing after the deleting
+         */
+        #endregion
+        public static void RowFocus(this GridView table,int rowHandle)
+        {
+            if (rowHandle<=0) return;
+
+            if (rowHandle == table.RowCount - 1)
+                table.FocusedRowHandle = rowHandle;
+            else
+                table.FocusedRowHandle = rowHandle - 1;
+        }
 
 
     }
