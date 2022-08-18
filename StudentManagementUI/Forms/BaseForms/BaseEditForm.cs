@@ -108,8 +108,12 @@ namespace StudentManagementUI.Forms.BaseForms
          * Here we have made our Event as virtual because we will be using it from some EditForms who are connected with each other such City and District when we have no value on City that District should be automaticlly disabled and we will be using it as override in other EditForms
          */
         #endregion
-        protected virtual void Control_EnableChange(object sender, EventArgs e) {  }
-
+        protected virtual void Control_EnableChange(object sender, EventArgs e) { }
+        #region Comment
+        /*
+         * Here whenever we changed any value on our EditForm that CreatedUpdatedEntity method will be running and there it will compare each other BaseOldEntity and BaseCurrentEntity there will enable or disable the our BarButtomItems
+         */
+        #endregion
         private void Control_EditValueChanged(object sender, EventArgs e)
         {
             if (!BaseIsLoaded) return;
@@ -318,13 +322,19 @@ namespace StudentManagementUI.Forms.BaseForms
             return ((IBaseGeneralBll)BaseBll).Insert(BaseCurrentEntity);
         }
 
+        #region Comment
+        /*
+         * Here in our EditForms Undo will simply whenever we open our EditForm as update it will be undoing the same
+         */
+        #endregion
         private void EntityUndo()
         {
-
+            if (Messages.UndoMessage() != DialogResult.Yes) return;
+            if (BaseProccessType == ProccessType.EntityUpdate)
+                MyBaseEditLoads();
+            else
+                Close();
         }
-
-
-
 
     }
 }

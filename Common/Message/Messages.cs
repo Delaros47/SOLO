@@ -61,5 +61,10 @@ namespace Common.Message
             WarningMessage("Please select the proper row on the table");
         }
 
+        public static DialogResult UndoMessage()
+        {
+            return YesSelectedYesNo("Do you want to undo the changes?","Undo Corfirmation");
+        }
+
     }
 }
