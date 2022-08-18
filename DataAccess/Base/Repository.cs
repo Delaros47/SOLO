@@ -234,8 +234,6 @@ namespace DataAccess.Base
         }
 
 
-
-
         private bool _disposedValue;
         protected virtual void Dispose(bool disposing)
         {

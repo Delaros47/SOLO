@@ -17,7 +17,7 @@ namespace Model.Entities.Base
      * DatabaseGenerated(DatabaseGeneratedOption.None) Here we say that don't make Identity Specification true we make it false
      * Required means that it shouldn't be null on our database in anyway we have to fill it
      * StringLength(25) here our PrivateCode is string length is 25 characters
-     * We have made our PrivateCode as virtual so we can override from other entities since every entity will be different PrivateCode value
+     * We have made our PrivateCode as virtual so we can override from other entities since some of our Entities will not be unique such as District there each City's District will start 000001 so there in District IsUnique we will set as false like that IsUnique =false
      */
     #endregion
     public class BaseEntity: IBaseEntity
