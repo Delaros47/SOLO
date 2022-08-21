@@ -8,13 +8,8 @@ using DevExpress.XtraGrid.Registrator;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using StudentManagementUI.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentManagementUI.UserControls.Grids
 {
@@ -164,9 +159,6 @@ namespace StudentManagementUI.UserControls.Grids
 
     public class MyGridColumn : GridColumn, IStatusBarShortcut
     {
-
-
-
 
         public string StatusBarShortcut { get; set; }
         public string StatusBarShortcutDescription { get; set; }

@@ -59,6 +59,7 @@ namespace StudentManagementUI.Forms.BaseForms
 
             //FormEvents
             Load += BaseEditForm_Load;
+            FormClosing += BaseEditForm_FormClosing;
 
             #region Comment
             /*
@@ -102,6 +103,21 @@ namespace StudentManagementUI.Forms.BaseForms
 
 
         }
+
+        #region Comment
+        /*
+         * Here whenever we close our Form that event will function and this one  if (btnSave.Visibility == BarItemVisibility.Never || !btnSave.Enabled) return; we will be using from another brunch to other 
+         * SaveTemplate(); is that whenever we open our Forms that which size will be what was the latest size and location of it so will be creating XML file and save informations inside it
+         */
+        #endregion
+        private void BaseEditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveTemplate();
+            if (btnSave.Visibility == BarItemVisibility.Never || !btnSave.Enabled) return;
+
+            if (!EntitySave(true))
+                e.Cancel = true;
+        }        
 
         #region Comment
         /*
@@ -227,6 +243,8 @@ namespace StudentManagementUI.Forms.BaseForms
 
         private void Button_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             if (e.Item == btnNew)
             {
                 BaseProccessType = ProccessType.EntityInsert;
@@ -248,6 +266,8 @@ namespace StudentManagementUI.Forms.BaseForms
             {
                 Close();
             }
+
+            Cursor.Current = DefaultCursor;
         }
 
         #region Comment
@@ -306,7 +326,7 @@ namespace StudentManagementUI.Forms.BaseForms
                         btnSave.Enabled = true;
                     return true;
                 case DialogResult.Cancel:
-                    return true;
+                    return false;
             }
 
             return false;
@@ -334,6 +354,11 @@ namespace StudentManagementUI.Forms.BaseForms
                 MyBaseEditLoads();
             else
                 Close();
+        }
+
+        private void SaveTemplate()
+        {
+            
         }
 
     }
