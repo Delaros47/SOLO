@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseListForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
@@ -68,11 +69,14 @@
             this.barExit = new DevExpress.XtraBars.BarStaticItem();
             this.barExitDescription = new DevExpress.XtraBars.BarStaticItem();
             this.btnActivePassiveList = new DevExpress.XtraBars.BarButtonItem();
+            this.btnConnectedBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.BasePopupRightMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BasePopupRightMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -120,9 +124,10 @@
             this.btnExcelFileUnformatted,
             this.btnWordFile,
             this.btnPdfFile,
-            this.btnTxtFile});
+            this.btnTxtFile,
+            this.btnConnectedBarButtonItem});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 39;
+            this.ribbonControl.MaxItemId = 40;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -477,6 +482,16 @@
             this.btnActivePassiveList.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.btnActivePassiveList.Name = "btnActivePassiveList";
             // 
+            // btnConnectedBarButtonItem
+            // 
+            this.btnConnectedBarButtonItem.Caption = "Connected Card";
+            this.btnConnectedBarButtonItem.Id = 39;
+            this.btnConnectedBarButtonItem.ImageOptions.Image = global::StudentManagementUI.Properties.Resources.documentmap_16x16;
+            this.btnConnectedBarButtonItem.ImageOptions.LargeImage = global::StudentManagementUI.Properties.Resources.documentmap_32x32;
+            this.btnConnectedBarButtonItem.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B));
+            this.btnConnectedBarButtonItem.Name = "btnConnectedBarButtonItem";
+            this.btnConnectedBarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -493,6 +508,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnRefresh);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFilter);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnColumns);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnConnectedBarButtonItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnPrint);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSend);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnExit);
@@ -532,6 +548,16 @@
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
             // 
+            // BasePopupRightMenu
+            // 
+            this.BasePopupRightMenu.ItemLinks.Add(this.btnNew);
+            this.BasePopupRightMenu.ItemLinks.Add(this.btnDelete);
+            this.BasePopupRightMenu.ItemLinks.Add(this.btnSelect);
+            this.BasePopupRightMenu.ItemLinks.Add(this.btnRefresh);
+            this.BasePopupRightMenu.ItemLinks.Add(this.btnEdit);
+            this.BasePopupRightMenu.Name = "BasePopupRightMenu";
+            this.BasePopupRightMenu.Ribbon = this.ribbonControl;
+            // 
             // BaseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,6 +572,7 @@
             this.ShowInTaskbar = false;
             this.StatusBar = this.ribbonStatusBar1;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BasePopupRightMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,5 +622,7 @@
         private DevExpress.XtraBars.BarButtonItem btnWordFile;
         private DevExpress.XtraBars.BarButtonItem btnPdfFile;
         private DevExpress.XtraBars.BarButtonItem btnTxtFile;
+        private DevExpress.XtraBars.PopupMenu BasePopupRightMenu;
+        private DevExpress.XtraBars.BarButtonItem btnConnectedBarButtonItem;
     }
 }

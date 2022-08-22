@@ -217,6 +217,18 @@ namespace StudentManagementUI.Functions
                 table.FocusedRowHandle = rowHandle - 1;
         }
 
+        #region Comment
+        /*
+         * Here we have created an extension method named ShowRightClickPopupMenu if we don't click right then it returns if not 
+         *  popupMenu.ShowPopup(Control.MousePosition); here we simple say open our Popup then it asks for cordinations so simply whenever our mouse position
+         */
+        #endregion
+        public static void ShowRightClickPopupMenu(this MouseEventArgs e,PopupMenu popupMenu)
+        {
+            if (e.Button != MouseButtons.Right) return;
+            popupMenu.ShowPopup(Control.MousePosition);
+        }
+
 
     }
 }

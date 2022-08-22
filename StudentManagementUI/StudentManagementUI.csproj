@@ -450,6 +450,11 @@
   <ItemGroup>
     <None Include="Resources\exporttotxt_32x32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\documentmap_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\documentmap_32x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

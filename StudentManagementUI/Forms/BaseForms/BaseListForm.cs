@@ -24,13 +24,14 @@ namespace StudentManagementUI.Forms.BaseForms
          * BaseEntity BaseSelectedEntity; Here whenever we choose from ButtonEdit and our GridView opens then we double click or Select button then it will save our Row into BaseEntity BaseSelectedEntity;
          * IBaseBll BaseBll; Here we send all our Business codes here we can delete,update insert or list any entity here thanks to IBaseBll interface it will get all kind of Business codes such CityBll(); DistrictBll(); becuase these classes inherited from BaseBll and BaseBll inherited from IBaseBll that means IBaseBll can hold their referances to reach it
          * ControlNavigator BaseNavigator; Here we will be sending from other forms Navigator here so it will be set here
-         * 
+         * protected internal bool BaseShowActivePassiveListButton = false; Here we set it as false if it is false then we will not be showing our Select button on ribbonControl
          */
         #endregion
         protected IBaseFormShow BaseFormShow;
         protected FormType BaseFormType;
         protected internal GridView BaseTable;
         protected bool BaseShowActivePassiveList = true;
+        protected internal bool BaseShowActivePassiveListButton = false;
         protected internal bool BaseMultiSelect;
         protected internal BaseEntity BaseSelectedEntity;
         protected IBaseBll BaseBll;
@@ -68,6 +69,7 @@ namespace StudentManagementUI.Forms.BaseForms
             //Table Events
             BaseTable.DoubleClick += Table_DoubleClick;
             BaseTable.KeyDown += Table_KeyDown;
+            BaseTable.MouseUp += BaseTable_MouseUp;
             //Form Events
 
             #region Comment
@@ -77,6 +79,16 @@ namespace StudentManagementUI.Forms.BaseForms
             #endregion
             Shown += BaseListForm_Shown;
 
+        }
+
+        #region Comment
+        /*
+         * Here we will be declaring our right click on Mouse in Table(GridView) so then our PopupMenu will be appering there we could do New,Delete,Select,Refresh and Edit it will be the same as with our BarItemButton
+         */
+        #endregion
+        private void BaseTable_MouseUp(object sender, MouseEventArgs e)
+        {
+            e.ShowRightClickPopupMenu(BasePopupRightMenu);
         }
 
         private void BaseListForm_Shown(object sender, EventArgs e)
@@ -101,7 +113,10 @@ namespace StudentManagementUI.Forms.BaseForms
 
         private void HideShowButtons()
         {
-
+            btnSelect.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Never : IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
+            barSelect.Visibility = IsMdiChild?BarItemVisibility.Never : BarItemVisibility.Always;
+            barSelectDescription.Visibility = IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
+            btnActivePassiveList.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Always : !IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
         }
 
         #region Comment
