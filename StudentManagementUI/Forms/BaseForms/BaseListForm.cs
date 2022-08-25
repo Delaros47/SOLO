@@ -1,5 +1,6 @@
 ﻿using Business.Interfaces;
 using Common.Enums;
+using DevExpress.Utils.Extensions;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
@@ -25,6 +26,7 @@ namespace StudentManagementUI.Forms.BaseForms
          * IBaseBll BaseBll; Here we send all our Business codes here we can delete,update insert or list any entity here thanks to IBaseBll interface it will get all kind of Business codes such CityBll(); DistrictBll(); becuase these classes inherited from BaseBll and BaseBll inherited from IBaseBll that means IBaseBll can hold their referances to reach it
          * ControlNavigator BaseNavigator; Here we will be sending from other forms Navigator here so it will be set here
          * protected internal bool BaseShowActivePassiveListButton = false; Here we set it as false if it is false then we will not be showing our Select button on ribbonControl
+         * protected BarItem[] ShowItems; Here we have declared ShowItems as array we will be showing some of our BarItem as Visibility true or false for example in CityListForm we will be showing Districts as true
          */
         #endregion
         protected IBaseFormShow BaseFormShow;
@@ -37,6 +39,8 @@ namespace StudentManagementUI.Forms.BaseForms
         protected IBaseBll BaseBll;
         protected ControlNavigator BaseNavigator;
         protected internal long? BaseListSelectedId;
+        protected BarItem[] ShowItems;
+        protected BarItem[] HideItems;
 
         public BaseListForm()
         {
@@ -111,12 +115,26 @@ namespace StudentManagementUI.Forms.BaseForms
 
         }
 
+        #region Comment
+        /*
+         * Here first one that if our BaseShowActivePassiveListButton is true and our form is MdiChild then then don't show us btnSelect on ribbonControl if it is false then show us
+         * Here second one is that if our Form is MdiChild then don't show us barSelect
+         * Here third one is that if our Form is MdiChild then don't show us barSelectDescription
+         * Here third one is that if our Form is not MdiChild then don't show and if BaseShowActivePassiveListButton is true then show us if not both of them then show us our btnActivePassiveList
+         */
+        #endregion
         private void HideShowButtons()
         {
             btnSelect.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Never : IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             barSelect.Visibility = IsMdiChild?BarItemVisibility.Never : BarItemVisibility.Always;
             barSelectDescription.Visibility = IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             btnActivePassiveList.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Always : !IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
+            #region Comment
+            /*
+             * Here we say that if our not null then go and look for BarItem and set their Visibility as true
+             */
+            #endregion
+            ShowItems?.ForEach(x=>x.Visibility=BarItemVisibility.Always);
         }
 
         #region Comment
@@ -285,6 +303,13 @@ namespace StudentManagementUI.Forms.BaseForms
         #endregion
         protected virtual void EntityRefresh() { }
 
+        #region Comment
+        /*
+         * Here we have created method named EntityConnectedBarButtonItem we will override it in CityListForm then there we will get our Row then we will open DistrictListForm with parameters CityId and CityName
+         */
+        #endregion
+        protected virtual void EntityConnectedBarButtonItem() { }
+
 
         #region Comment
         /*
@@ -400,6 +425,11 @@ namespace StudentManagementUI.Forms.BaseForms
                     BaseTable.HideCustomization();
                 }
             }
+            else if (e.Item==btnConnectedBarButtonItem)
+            {
+                EntityConnectedBarButtonItem();
+
+            }
             else if (e.Item == btnPrint)
             {
                 EntityPrint();
@@ -418,6 +448,6 @@ namespace StudentManagementUI.Forms.BaseForms
 
         }
 
-
+        
     }
 }

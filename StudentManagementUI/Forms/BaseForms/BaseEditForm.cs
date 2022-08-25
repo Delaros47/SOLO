@@ -23,10 +23,12 @@ namespace StudentManagementUI.Forms.BaseForms
          * IBaseBll BaseBll; here we will make update,delete and insert
          * Here we have BaseEntity OldEntity; and BaseEntity CurrentEntity; on our EditForms if we try to update an entity first on EditForm first it will get our OldEntity in our EditForms then if we try to click the save then it will save current entity into CurrentEntity then it will compare both of them if there are any changes then it will save and it returns id into ListForm and it will be focused on its Row 
          * BaseIsLoaded is that whenever we open our EditForms that if we open and loads the Form is true if not then it is false
-         * MyDataLayoutControl[] BaseDataLayoutControls; Here actually main thing we should send our events from DataLayoutControl to our BaseEditForm so sometimes our Form can contain multiply DataLayoutControls so that's why we have declared as array also 
+         * MyDataLayoutControl[] BaseDataLayoutControls; Here actually main thing we should send our events from DataLayoutControl to our BaseEditForm so sometimes our Form can contain multiply DataLayoutControls so that's why we have declared as array also
+         * protected bool FormTemplateWillBeSaved; Here we simply know that will be saving our Form Template or not
          */
         #endregion
         protected internal ProccessType BaseProccessType;
+        protected bool BaseFormTemplateWillBeSaved;
         protected internal long BaseEditId;
         protected internal bool BaseWillRefresh;
         protected internal MyDataLayoutControl BaseDataLayoutControl;
@@ -60,6 +62,7 @@ namespace StudentManagementUI.Forms.BaseForms
             //FormEvents
             Load += BaseEditForm_Load;
             FormClosing += BaseEditForm_FormClosing;
+
 
             #region Comment
             /*
@@ -191,10 +194,19 @@ namespace StudentManagementUI.Forms.BaseForms
             }
         }
 
+        #region Comment
+        /*
+         * Here is our First Form will be run then it sets our BaseIsLoad as true
+         * Second it calls our CreateUpdatedEntity(); method
+         * Third is it will Load our settings when we last time we closed the Form but in order to know we made some changes or not we have to declare two events in our BaseEditForm
+         * Forth one is that it will create and Id for our Entity
+         */
+        #endregion
         private void BaseEditForm_Load(object sender, EventArgs e)
         {
             BaseIsLoaded = true;
             CreateUpdatedEntity();
+            LoadTemplate();
             BaseEditId = BaseProccessType.CreateId(BaseOldEntity);
         }
 
@@ -356,9 +368,31 @@ namespace StudentManagementUI.Forms.BaseForms
                 Close();
         }
 
-        private void SaveTemplate()
+        #region Comment
+        /*
+         * Here simply we have created a method that if our BaseFormTemplateWillBeSave true then we will save our Form size and location and WindowState
+         * we will be using this whenever our Form is closing event but beside this one we will be declaring two events named LocationChanged and SizeChanged events there we will set our BaseFormTemplateWillBeSave as true or false
+         */
+        #endregion
+        protected void SaveTemplate()
         {
-            
+            #region Comment
+            /*
+             * Here Name is that our Form Name and SaveFormTemplate is our extension method since Name is string method and when we created extension method first thing that was this string
+             */
+            #endregion
+            if (BaseFormTemplateWillBeSaved)
+                Name.SaveFormTemplate(Left, Top, Width, Height, WindowState);           
+        }
+
+        #region Comment
+        /*
+         * Here we have created method named LoadTemplate it will simply run our extension method and load our settings and LoadFormTemplate and for a form we assign this means that our current Form we will be using it when first our Form is Loaded
+         */
+        #endregion
+        private void LoadTemplate()
+        {
+            Name.LoadFormTemplate(this);
         }
 
     }

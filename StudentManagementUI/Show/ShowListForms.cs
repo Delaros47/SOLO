@@ -43,6 +43,19 @@ namespace StudentManagementUI.Show
 
         #region Comment
         /*
+         * Here we will be opening our Districts from CityListForm so we will pass CityId and CityName that's why we have declared params as prm
+         */
+        #endregion
+        public static void ShowListForm(FormType formType, params object[] prm)
+        {
+            var frm = (TForm)Activator.CreateInstance(typeof(TForm),prm);
+            frm.MdiParent = Form.ActiveForm;
+            frm.MyBaseListLoads();
+            frm.Show();
+        }
+
+        #region Comment
+        /*
          * Here we have created method named ShowDialogListForm and simply we will be using when we select any List Froms from ButtonEdit controls and our ListForm is not mdiChild anymore it means that it will be open as Dialog like our EditForms
          */
         #endregion

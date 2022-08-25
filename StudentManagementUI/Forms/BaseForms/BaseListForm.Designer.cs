@@ -623,6 +623,6 @@
         private DevExpress.XtraBars.BarButtonItem btnPdfFile;
         private DevExpress.XtraBars.BarButtonItem btnTxtFile;
         private DevExpress.XtraBars.PopupMenu BasePopupRightMenu;
-        private DevExpress.XtraBars.BarButtonItem btnConnectedBarButtonItem;
+        protected DevExpress.XtraBars.BarButtonItem btnConnectedBarButtonItem;
     }
 }
