@@ -67,7 +67,7 @@ namespace StudentManagementUI.UserControls.Controls
                 });
 
                 if (i + 1 != 10) continue;
-                group.OptionsTableLayoutGroup.RowDefinitions.Add(new RowDefinition { SizeType = SizeType.Absolute, Height = 100 });
+                group.OptionsTableLayoutGroup.RowDefinitions.Add(new RowDefinition { SizeType = SizeType.Percent, Height = 100 });
                 break;
             }
 
