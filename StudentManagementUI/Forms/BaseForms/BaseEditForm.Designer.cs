@@ -35,12 +35,12 @@
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
             this.statusBarDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.statusBarShortcut = new DevExpress.XtraBars.BarStaticItem();
+            this.statusBarShortcutDescription = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.statusBarShortcut = new DevExpress.XtraBars.BarStaticItem();
-            this.statusBarShortcutDescription = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowQatLocationSelector = false;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(490, 102);
+            this.ribbonControl.Size = new System.Drawing.Size(482, 102);
             this.ribbonControl.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -131,6 +131,18 @@
             this.statusBarDescription.Name = "statusBarDescription";
             this.statusBarDescription.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // statusBarShortcut
+            // 
+            this.statusBarShortcut.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.statusBarShortcut.Id = 7;
+            this.statusBarShortcut.Name = "statusBarShortcut";
+            // 
+            // statusBarShortcutDescription
+            // 
+            this.statusBarShortcutDescription.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.statusBarShortcutDescription.Id = 8;
+            this.statusBarShortcutDescription.Name = "statusBarShortcutDescription";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -156,30 +168,18 @@
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 318);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(490, 31);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(482, 31);
             // 
             // ribbonPage2
             // 
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
             // 
-            // statusBarShortcut
-            // 
-            this.statusBarShortcut.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.statusBarShortcut.Id = 7;
-            this.statusBarShortcut.Name = "statusBarShortcut";
-            // 
-            // statusBarShortcutDescription
-            // 
-            this.statusBarShortcutDescription.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.statusBarShortcutDescription.Id = 8;
-            this.statusBarShortcutDescription.Name = "statusBarShortcutDescription";
-            // 
             // BaseEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 349);
+            this.ClientSize = new System.Drawing.Size(482, 349);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl);
             this.IconOptions.ShowIcon = false;
