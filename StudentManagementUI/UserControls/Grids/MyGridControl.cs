@@ -120,7 +120,7 @@ namespace StudentManagementUI.UserControls.Grids
             if (column.ColumnEdit == null) return;
             if (column.ColumnEdit.GetType() == typeof(RepositoryItemDateEdit))
             {
-                column.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                column.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
                 ((RepositoryItemDateEdit)column.ColumnEdit).Mask.MaskType = MaskType.DateTimeAdvancingCaret;
             }
 
