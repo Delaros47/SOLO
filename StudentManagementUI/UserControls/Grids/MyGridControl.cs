@@ -112,7 +112,7 @@ namespace StudentManagementUI.UserControls.Grids
         }
 
         #region Comment
-        //We would like to align to center our ColumnEdit in GridControl and in our GridControl DateEdit is called RepositoryItemDateEdit these thing are different cause it was created for just GridContol and we first override our OnColumnChangedCore cause we wanted some Custom options for ourself here we centered our ColumnEdit DateEdit one then we changed Masktype to DateTimeAdvancingCaret means that whenever we choose the day auto it goes to month and when we choose the month that it goes to year
+        //We would like to align to center our ColumnEdit which is RepositoryItemDate means that DateEdit in GridControl and in our GridControl DateEdit is called RepositoryItemDateEdit these thing are different cause it was created for just GridContol and we first override our OnColumnChangedCore cause we wanted some Custom options for ourself here we centered our ColumnEdit DateEdit one then we changed Masktype to DateTimeAdvancingCaret means that whenever we choose the day auto it goes to month and when we choose the month that it goes to year
         #endregion
         protected override void OnColumnChangedCore(GridColumn column)
         {
