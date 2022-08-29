@@ -63,6 +63,14 @@ namespace StudentManagementUI.Forms.BaseForms
             Load += BaseEditForm_Load;
             FormClosing += BaseEditForm_FormClosing;
 
+            #region Comment
+            /*
+             * Here whenever we change our Formsize or location of the Form these events will invoke and we will set our BaseFormTemplateWillBeSaved to true
+             */
+            #endregion
+            LocationChanged += BaseEditForm_LocationChanged;
+            SizeChanged += BaseEditForm_SizeChanged;
+
 
             #region Comment
             /*
@@ -105,6 +113,26 @@ namespace StudentManagementUI.Forms.BaseForms
             }
 
 
+        }
+
+        #region Comment
+        /*
+         * Here whenever we change the size our Form that we will be setting BaseFormTemplateWillBeSaved to true in order to save it in Template
+         */
+        #endregion
+        private void BaseEditForm_SizeChanged(object sender, EventArgs e)
+        {
+            BaseFormTemplateWillBeSaved = true;
+        }
+
+        #region Comment
+        /*
+         * Here whenever we change the location of our Form that we will be setting BaseFormTemplateWillBeSaved to true in order to save it in Template
+         */
+        #endregion
+        private void BaseEditForm_LocationChanged(object sender, EventArgs e)
+        {
+            BaseFormTemplateWillBeSaved = true;
         }
 
         #region Comment
