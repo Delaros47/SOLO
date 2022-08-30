@@ -9,6 +9,8 @@ using StudentManagementUI.Functions;
 using StudentManagementUI.UserControls.Controls;
 using System;
 using System.Windows.Forms;
+using StudentManagementUI.Interfaces;
+using StudentManagementUI.UserControls.Grids;
 
 namespace StudentManagementUI.Forms.BaseForms
 {
@@ -28,7 +30,7 @@ namespace StudentManagementUI.Forms.BaseForms
          */
         #endregion
         protected internal ProccessType BaseProccessType;
-        protected bool BaseFormTemplateWillBeSaved;
+        private bool BaseFormTemplateWillBeSaved;
         protected internal long BaseEditId;
         protected internal bool BaseWillRefresh;
         protected internal MyDataLayoutControl BaseDataLayoutControl;
@@ -75,11 +77,16 @@ namespace StudentManagementUI.Forms.BaseForms
             #region Comment
             /*
              * Here we have created a method called ControlEvents that it will simply run our own Events on EditForms such as KeyDown here control.KeyDown += Control_KeyDown; in our EditForm which componant we press that KeyDown event will work and KeyDown is only one press on the componant
+             * Second event is that whenever we focus on our componant in EditForms that it will invoke here we will be getting IStatusBarDescription,IStatusBarShortcut and IStatusBarShortcutDescription
+             * Third event whenever we leave the componant that we will be removing our IStatusBarDescription,IStatusBarShortcut and IStatusBarShortcutDescription from the EditForms
              */
             #endregion
             void ControlEvents(Control control)
             {
                 control.KeyDown += Control_KeyDown;
+                control.GotFocus += Control_GotFocus;
+                control.Leave += Control_Leave;
+
                 switch (control)
                 {
                     case MyButtonEdit edit:
@@ -112,6 +119,58 @@ namespace StudentManagementUI.Forms.BaseForms
                         ControlEvents(ctrl);
             }
 
+
+        }
+
+        #region Comment
+        /*
+         * Here whenever we leave the componants of our EditForms then we will be hiding our statusBars
+         */
+        #endregion
+        private void Control_Leave(object sender, EventArgs e)
+        {
+            statusBarShortcut.Visibility = BarItemVisibility.Never;
+            statusBarShortcutDescription.Visibility = BarItemVisibility.Never;
+        }
+
+        #region Comment
+        /*
+         * Here when we focus componant inside our EditForms so we will be setting values of IStatusBarDescription,IStatusBarShortcut and IStatusBarShortcutDescription
+         */
+        #endregion
+        private void Control_GotFocus(object sender, EventArgs e)
+        {
+            #region Comment
+            /*
+             * Here first we will be getting the type of our componant but keep in mind that with condition one is that when componant has IStatusBarDescription,IStatusBarShortcut,IStatusBarShortcutDescription
+             */
+            #endregion
+            var type = sender.GetType();
+
+            if (type == typeof(MyButtonEdit) || type == typeof(MyGridView) || type == typeof(MyPictureEdit) ||
+                type == typeof(MyComboBoxEdit) || type == typeof(MyDateEdit))
+            {
+                #region Comment
+                /*
+                 * Here if our condition is true then we will be setting statusBarShortcut and statusBarShortcutDescription and statusBarDescription from what we have already defined in our Componant for example btnCityName there we have already defined our statusBarShortcut,statusBarShortcutDescription and statusBarDescription
+                 *  Here statusBarShortcut.Visibility = BarItemVisibility.Always; we make our statusBars as visible
+                 */
+                #endregion
+                statusBarShortcut.Visibility = BarItemVisibility.Always;
+                statusBarShortcutDescription.Visibility = BarItemVisibility.Always;
+
+                statusBarShortcut.Caption = ((IStatusBarShortcut) sender).StatusBarShortcut;
+                statusBarShortcutDescription.Caption = ((IStatusBarShortcut)sender).StatusBarShortcutDescription;
+                statusBarDescription.Caption = ((IStatusBarDescription) sender).StatusBarDescription;
+            }else if(sender is IStatusBarDescription)
+            {
+                #region Comment
+                /*
+                 * Here if our sender is IStatusBarDescription then we only be needing to set our StatusBarDescription inside the EditForms
+                 */
+                #endregion
+                statusBarDescription.Caption = ((IStatusBarDescription) sender).StatusBarDescription;
+            }
 
         }
 

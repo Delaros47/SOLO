@@ -27,8 +27,12 @@ namespace StudentManagementUI.Forms.BaseForms
          * ControlNavigator BaseNavigator; Here we will be sending from other forms Navigator here so it will be set here
          * protected internal bool BaseShowActivePassiveListButton = false; Here we set it as false if it is false then we will not be showing our Select button on ribbonControl
          * protected BarItem[] ShowItems; Here we have declared ShowItems as array we will be showing some of our BarItem as Visibility true or false for example in CityListForm we will be showing Districts as true
+         * BaseFormTemplateWillBeSaved; BaseTableTemplateWillBeSaved; we have here two variables that one is for saving template of for ListForm another one is just for Table(GridView)
          */
         #endregion
+
+        private bool BaseFormTemplateWillBeSaved;
+        private bool BaseTableTemplateWillBeSaved;
         protected IBaseFormShow BaseFormShow;
         protected FormType BaseFormType;
         protected internal GridView BaseTable;
@@ -65,24 +69,91 @@ namespace StudentManagementUI.Forms.BaseForms
                     case BarItem button:
                         button.ItemClick += Button_ItemClick;
                         break;
-                    default:
-                        break;
                 }
             }
 
             //Table Events
+            #region Comment
+            /*
+             * First event invokes whenever we double click on our Table(GridView)
+             * Second event invokes whenever we press any key on our Table(GridView)
+             * Third event invokes whenever we right click with our mouse and we release it on our Table(GridView)
+             * Fourth event invokes whenever we change any column with within our Table(GridView)
+             * Fifth event invokes whenever we change any position of any column within our Table(GridView)
+             * Sixth event invokes whenever we make any column sorting from A-Z or Z-A in our Table(GridView)
+             */
+            #endregion
             BaseTable.DoubleClick += Table_DoubleClick;
             BaseTable.KeyDown += Table_KeyDown;
             BaseTable.MouseUp += BaseTable_MouseUp;
-            //Form Events
+            BaseTable.ColumnWidthChanged += BaseTable_ColumnWidthChanged;
+            BaseTable.ColumnPositionChanged += BaseTable_ColumnPositionChanged;
+            BaseTable.EndSorting += BaseTable_EndSorting;
 
+            //Form Events
             #region Comment
             /*
-             * This our event whenever first shows us that and Shown event will function 
+             * This our event whenever first shows us that and Shown event will function
+             * Second event invokes whenever we open our ListForms
+             * Third event invokes whenever we close our ListForms
+             * Forth event invokes whenever we change location of our ListForms
+             * Fifth event invokes whenever we change the size of our ListForms
              */
             #endregion
             Shown += BaseListForm_Shown;
+            Load += BaseListForm_Load;
+            Closing += BaseListForm_Closing;
+            LocationChanged += BaseListForm_LocationChanged;
+            SizeChanged += BaseListForm_SizeChanged;
+            
 
+        }
+
+        private void BaseListForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (!IsMdiChild)
+                BaseFormTemplateWillBeSaved = true;
+        }
+
+        private void BaseListForm_LocationChanged(object sender, EventArgs e)
+        {
+            if (!IsMdiChild)
+                BaseFormTemplateWillBeSaved = true;
+        }
+
+        private void BaseTable_EndSorting(object sender, EventArgs e)
+        {
+            BaseTableTemplateWillBeSaved = true;
+        }
+
+        private void BaseTable_ColumnPositionChanged(object sender, EventArgs e)
+        {
+            BaseTableTemplateWillBeSaved = true;
+        }
+
+        private void BaseTable_ColumnWidthChanged(object sender, DevExpress.XtraGrid.Views.Base.ColumnEventArgs e)
+        {
+            BaseTableTemplateWillBeSaved = true;
+        }
+
+        #region Comment
+        /*
+         * Here simply whenever our ListForm closes that it will invoke the BaseListFrom_Closing and run SaveTemplate and all settings will be set inside the XML file 
+         */
+        #endregion
+        private void BaseListForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveTemplate();
+        }
+
+        #region Comment
+        /*
+         * Here simply whenever our ListForm loads that it will invoke the BaseListFrom_Load and run LoadTemplate and all settings will be getting from the XML file 
+         */
+        #endregion
+        private void BaseListForm_Load(object sender, EventArgs e)
+        {
+            LoadTemplate();
         }
 
         #region Comment
@@ -126,7 +197,7 @@ namespace StudentManagementUI.Forms.BaseForms
         private void HideShowButtons()
         {
             btnSelect.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Never : IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
-            barSelect.Visibility = IsMdiChild?BarItemVisibility.Never : BarItemVisibility.Always;
+            barSelect.Visibility = IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             barSelectDescription.Visibility = IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             btnActivePassiveList.Visibility = BaseShowActivePassiveListButton ? BarItemVisibility.Always : !IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             #region Comment
@@ -134,7 +205,7 @@ namespace StudentManagementUI.Forms.BaseForms
              * Here we say that if our not null then go and look for BarItem and set their Visibility as true
              */
             #endregion
-            ShowItems?.ForEach(x=>x.Visibility=BarItemVisibility.Always);
+            ShowItems?.ForEach(x => x.Visibility = BarItemVisibility.Always);
         }
 
         #region Comment
@@ -223,7 +294,7 @@ namespace StudentManagementUI.Forms.BaseForms
         {
             if (BaseMultiSelect)
             {
-                
+
             }
             else
             {
@@ -338,6 +409,41 @@ namespace StudentManagementUI.Forms.BaseForms
             EntityRefresh();
         }
 
+        #region Comment
+        /*
+         * Here simply we have created a method that if our BaseFormTemplateWillBeSave true then we will save our Form size and location and WindowState
+         * we will be using this whenever our Form is closing event but beside this one we will be declaring two events named LocationChanged and SizeChanged events there we will set our BaseFormTemplateWillBeSave as true or false
+         * Second condition state that if our Table is MdiChild then we save named like this FormName+Table if it is MDI form Then FormName+TableMDI
+         */
+        #endregion
+        private void SaveTemplate()
+        {
+            if (BaseFormTemplateWillBeSaved)
+                Name.SaveFormTemplate(Left, Top, Width, Height, WindowState);
+
+            if (BaseTableTemplateWillBeSaved)
+                BaseTable.SaveTableTemplate(IsMdiChild ? Name + " Table" : Name + " TableMDI");
+        }
+
+        #region Comment
+        /*
+         * Whenever our Form is MdiChild then we only need Table(GridView) settings since all MdiChild is the same size and fixed inside MDI parents we only need settings from our Table
+         * Second one is if it is MDI form then for Table get FormTemplate plus TableTemplate
+         */
+        #endregion
+        private void LoadTemplate()
+        {
+            if (IsMdiChild)
+            {
+                BaseTable.LoadTableTemplate(Name + " Table");
+            }
+            else
+            {
+                Name.LoadFormTemplate(this);
+                BaseTable.LoadTableTemplate(Name + " TableMDI");
+            }
+        }
+
 
         private void Button_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -425,7 +531,7 @@ namespace StudentManagementUI.Forms.BaseForms
                     BaseTable.HideCustomization();
                 }
             }
-            else if (e.Item==btnConnectedBarButtonItem)
+            else if (e.Item == btnConnectedBarButtonItem)
             {
                 EntityConnectedBarButtonItem();
 
@@ -448,6 +554,6 @@ namespace StudentManagementUI.Forms.BaseForms
 
         }
 
-        
+
     }
 }
