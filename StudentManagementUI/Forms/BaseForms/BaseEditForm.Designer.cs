@@ -128,6 +128,8 @@
             this.statusBarDescription.Id = 6;
             this.statusBarDescription.ImageOptions.Image = global::StudentManagementUI.Properties.Resources.suggestion_16x16;
             this.statusBarDescription.ImageOptions.LargeImage = global::StudentManagementUI.Properties.Resources.suggestion_32x32;
+            this.statusBarDescription.ItemAppearance.Normal.ForeColor = System.Drawing.Color.DarkBlue;
+            this.statusBarDescription.ItemAppearance.Normal.Options.UseForeColor = true;
             this.statusBarDescription.Name = "statusBarDescription";
             this.statusBarDescription.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -135,12 +137,18 @@
             // 
             this.statusBarShortcut.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.statusBarShortcut.Id = 7;
+            this.statusBarShortcut.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.statusBarShortcut.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Green;
+            this.statusBarShortcut.ItemAppearance.Normal.Options.UseFont = true;
+            this.statusBarShortcut.ItemAppearance.Normal.Options.UseForeColor = true;
             this.statusBarShortcut.Name = "statusBarShortcut";
             // 
             // statusBarShortcutDescription
             // 
             this.statusBarShortcutDescription.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.statusBarShortcutDescription.Id = 8;
+            this.statusBarShortcutDescription.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Green;
+            this.statusBarShortcutDescription.ItemAppearance.Normal.Options.UseForeColor = true;
             this.statusBarShortcutDescription.Name = "statusBarShortcutDescription";
             // 
             // ribbonPage1

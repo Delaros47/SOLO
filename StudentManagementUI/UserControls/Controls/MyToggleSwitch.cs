@@ -32,6 +32,6 @@ namespace StudentManagementUI.UserControls.Controls
         }
 
         public override bool EnterMoveNextControl { get; set; } = true;
-        public string StatusBarDescription { get; set; } = "Choose the state of your form";
+        public string StatusBarDescription { get; set; } = "Choose the state of the Form";
     }
 }
