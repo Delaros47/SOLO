@@ -66,5 +66,20 @@ namespace Common.Message
             return YesSelectedYesNo("Do you want to undo the changes?","Undo Corfirmation");
         }
 
+        public static void RepeatedEntityErrorMessage(string fieldName)
+        {
+            WarningMessage($"Entered {fieldName} before has been used");
+        }
+
+        public static void InvalidErrorMessage(string fieldName)
+        {
+            WarningMessage($"{fieldName} enter the valid value");
+        }
+
+        public static DialogResult ExportTableDataMessage(string extentionFile)
+        {
+            return YesSelectedYesNo($"Regarding Table As {extentionFile} will be exported. Do you confirm it?", "Export Corfirmation");
+        }
+
     }
 }

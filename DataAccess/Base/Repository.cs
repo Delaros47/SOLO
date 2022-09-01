@@ -233,6 +233,16 @@ namespace DataAccess.Base
 
         }
 
+        #region Comment
+        /*
+         * Here our Count method will go to database and look for any avaible for our filter
+         */
+        #endregion
+        public int Count(Expression<Func<T, bool>> filter = null)
+        {
+            return filter == null ? _dbSet.Count() : _dbSet.Count(filter);
+        }
+
 
         private bool _disposedValue;
         protected virtual void Dispose(bool disposing)

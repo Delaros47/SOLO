@@ -213,8 +213,8 @@
         private DevExpress.XtraBars.BarButtonItem btnUndo;
         private DevExpress.XtraBars.BarButtonItem btnDelete;
         private DevExpress.XtraBars.BarButtonItem btnExit;
-        private DevExpress.XtraBars.BarStaticItem statusBarDescription;
-        private DevExpress.XtraBars.BarStaticItem statusBarShortcut;
-        private DevExpress.XtraBars.BarStaticItem statusBarShortcutDescription;
+        protected DevExpress.XtraBars.BarStaticItem statusBarDescription;
+        protected DevExpress.XtraBars.BarStaticItem statusBarShortcut;
+        protected DevExpress.XtraBars.BarStaticItem statusBarShortcutDescription;
     }
 }

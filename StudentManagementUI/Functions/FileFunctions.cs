@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using Common.Enums;
+using DevExpress.Export;
+using DevExpress.XtraPrinting;
 
 namespace StudentManagementUI.Functions
 {
@@ -25,7 +29,7 @@ namespace StudentManagementUI.Functions
          * Here we have created an extention method named FormTemplateSave we will be saving inside the Xml file our latest form settings templateName,left,top,width,height,formWindowsSate
          */
         #endregion
-        public static void SaveFormTemplate(this string templateName,int left,int top,int width,int height,FormWindowState formWindowState)
+        public static void SaveFormTemplate(this string templateName, int left, int top, int width, int height, FormWindowState formWindowState)
         {
             #region Comment
             /*
@@ -35,7 +39,7 @@ namespace StudentManagementUI.Functions
             try
             {
                 if (!Directory.Exists(Application.StartupPath + @"\Save Template"))
-                    Directory.CreateDirectory(Application.StartupPath+@"\Save Template");
+                    Directory.CreateDirectory(Application.StartupPath + @"\Save Template");
                 #region Comment
                 /*
                  * Here we have created settings we will set our xml file Indent as true because we will save more then one line that's why it should be indented
@@ -47,7 +51,7 @@ namespace StudentManagementUI.Functions
                  * Here we have created our xml file with templateName_location.xml and with indented settings in our application Directory
                  */
                 #endregion
-                var writer = XmlWriter.Create(Application.StartupPath+ @"\Save Template\"+templateName+"_location.xml",settings);
+                var writer = XmlWriter.Create(Application.StartupPath + @"\Save Template\" + templateName + "_location.xml", settings);
                 #region Comment
                 /*
                  * Here we have we say that we will write inside our xml file
@@ -77,13 +81,13 @@ namespace StudentManagementUI.Functions
                  * Here we say that our Left location where it will be started inside xml attribute
                  */
                 #endregion
-                writer.WriteAttributeString("Left",left.ToString());
+                writer.WriteAttributeString("Left", left.ToString());
                 #region Comment
                 /*
                  * Here we say that our Top location where it will be started inside xml attribute
                  */
                 #endregion
-                writer.WriteAttributeString("Top",top.ToString());
+                writer.WriteAttributeString("Top", top.ToString());
                 #region Comment
                 /*
                  * Here we say that we wil be closing our Location Element
@@ -98,15 +102,15 @@ namespace StudentManagementUI.Functions
                  */
                 #endregion
                 writer.WriteStartElement("FormSize");
-                if (formWindowState==FormWindowState.Maximized)
+                if (formWindowState == FormWindowState.Maximized)
                 {
-                    writer.WriteAttributeString("Width","-1");
-                    writer.WriteAttributeString("Height","-1");
+                    writer.WriteAttributeString("Width", "-1");
+                    writer.WriteAttributeString("Height", "-1");
                 }
                 else
                 {
-                    writer.WriteAttributeString("Width",width.ToString());
-                    writer.WriteAttributeString("Height",height.ToString());
+                    writer.WriteAttributeString("Width", width.ToString());
+                    writer.WriteAttributeString("Height", height.ToString());
                 }
                 #region Comment
                 /*
@@ -135,7 +139,7 @@ namespace StudentManagementUI.Functions
          * Here we have created method named LoadFormTemplate method it will simply go inside our XML file and read it and get our values from it
          */
         #endregion
-        public static void LoadFormTemplate(this string templateName,XtraForm frm)
+        public static void LoadFormTemplate(this string templateName, XtraForm frm)
         {
             #region Comment
             /*
@@ -160,12 +164,12 @@ namespace StudentManagementUI.Functions
                          * Here we will be checking if our XML file exists element and element name is Location then add it inside our list generic string when we will get it that we will get the Width and Height from it
                          */
                         #endregion
-                        if (reader.NodeType==XmlNodeType.Element && reader.Name=="Location")
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Location")
                         {
                             list.Add(reader.GetAttribute(0));
                             list.Add(reader.GetAttribute(1));
                         }
-                        else if (reader.NodeType==XmlNodeType.Element && reader.Name=="FormSize")
+                        else if (reader.NodeType == XmlNodeType.Element && reader.Name == "FormSize")
                         {
                             list.Add(reader.GetAttribute(0));
                             list.Add(reader.GetAttribute(1));
@@ -205,7 +209,7 @@ namespace StudentManagementUI.Functions
          * Here we have created SaveTableTemplate we simply save user about Columns in Table(GridView) settings and first one was about the Forms
          */
         #endregion
-        public static void SaveTableTemplate(this GridView table,string templateName)
+        public static void SaveTableTemplate(this GridView table, string templateName)
         {
             try
             {
@@ -218,9 +222,9 @@ namespace StudentManagementUI.Functions
                 #endregion
                 table.ClearColumnsFilter();
                 if (!Directory.Exists(Application.StartupPath + @"\Save Template"))
-                    Directory.CreateDirectory(Application.StartupPath+@"\Save Template");
+                    Directory.CreateDirectory(Application.StartupPath + @"\Save Template");
 
-                table.SaveLayoutToXml(Application.StartupPath+$@"\Save Template\{templateName}.xml");
+                table.SaveLayoutToXml(Application.StartupPath + $@"\Save Template\{templateName}.xml");
 
             }
             catch (Exception exception)
@@ -236,18 +240,108 @@ namespace StudentManagementUI.Functions
          * Second one is that if it exists that it restores it for us it is Devexpress method easily can be used
          */
         #endregion
-        public static void LoadTableTemplate(this GridView table,string templateName)
+        public static void LoadTableTemplate(this GridView table, string templateName)
         {
             try
             {
                 if (File.Exists(Application.StartupPath + $@"\Save Template\{templateName}.xml"))
-                    table.RestoreLayoutFromXml(Application.StartupPath+$@"\Save Template\{templateName}.xml");
+                    table.RestoreLayoutFromXml(Application.StartupPath + $@"\Save Template\{templateName}.xml");
 
             }
             catch (Exception exception)
             {
                 Messages.ErrorMessage(exception.Message);
             }
+        }
+
+        #region Comment
+        /*
+         * Here we have created an extension method that it will simply export our Table data ExcelStandard,ExcelFormatted,ExcelUnformatted,PdfFile,WordFile and TxtFile
+         * First one is we will be getting DialogResult whenever user click Yes or No if yes then continue if no then return
+         * Second one we check that if our Temp directory doesn't exist then create a new one
+         * Third one we have created FileName as unique by using Guid
+         * Fourth we have created our File Path
+         *
+         */
+        #endregion
+        public static void ExportTableData(this GridView table, FileType fileType, string fileExtension, string excelFileName = null)
+        {
+            if (Messages.ExportTableDataMessage(fileExtension) != DialogResult.Yes) return;
+
+            if (!Directory.Exists(Application.StartupPath + @"\Temp"))
+                Directory.CreateDirectory(Application.StartupPath + @"\Temp");
+
+            var fileName = Guid.NewGuid().ToString();
+            var filePath = Application.StartupPath + $@"\Temp\{fileName}";
+
+            switch (fileType)
+            {
+                case FileType.ExcelStandard:
+                    {
+                        var options = new XlsxExportOptionsEx
+                        {
+                            ExportType = ExportType.Default,
+                            SheetName = excelFileName,
+                            TextExportMode = TextExportMode.Text
+                        };
+
+                        filePath = filePath + ".Xlsx";
+                        table.ExportToXlsx(filePath, options);
+                    }
+                    break;
+                case FileType.ExcelFormatted:
+                    {
+                        var options = new XlsxExportOptionsEx
+                        {
+                            ExportType = ExportType.WYSIWYG,
+                            SheetName = excelFileName,
+                            TextExportMode = TextExportMode.Text
+                        };
+
+                        filePath = filePath + ".Xlsx";
+                        table.ExportToXlsx(filePath, options);
+                    }
+                    break;
+                case FileType.ExcelUnFormatted:
+                    {
+                        var options = new CsvExportOptionsEx
+                        {
+                            ExportType = ExportType.WYSIWYG,
+                            TextExportMode = TextExportMode.Text
+                        };
+                        filePath = filePath + ".Csv";
+                        table.ExportToCsv(filePath, options);
+                    }
+                    break;
+                case FileType.PdfFile:
+                    filePath = filePath + ".Pdf";
+                    table.ExportToPdf(filePath);
+                    break;
+                case FileType.WordFile:
+                    filePath = filePath + ".Docx";
+                    table.ExportToDocx(filePath);
+                    break;
+                case FileType.TxtFile:
+                    {
+                        var options = new TextExportOptions
+                        {
+                            TextExportMode = TextExportMode.Text
+                        };
+                        filePath = filePath + ".Txt";
+                        table.ExportToText(filePath);
+                    }
+                    break;
+
+            }
+
+            if (!File.Exists(filePath))
+            {
+                Messages.ErrorMessage("Table data couldn't export");
+                return;
+            }
+
+            Process.Start(filePath);
+
         }
 
 

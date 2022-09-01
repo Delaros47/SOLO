@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Attributes;
 
 namespace Model.Entities
 {
@@ -13,7 +14,7 @@ namespace Model.Entities
     {
         [Index("IX_PrivateCode",IsUnique =true)]
         public override string PrivateCode { get; set; }
-        [Required,StringLength(50)]
+        [Required,StringLength(50),RequiredFields("City Name","txtCityName")]
         public string CityName { get; set; }
         [StringLength(500)]
         public string Description { get; set; }

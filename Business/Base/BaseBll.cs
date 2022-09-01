@@ -6,13 +6,11 @@ using Common.Message;
 using DataAccess.Interfaces;
 using Model.Entities.Base;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model.Attributes;
 
 namespace Business.Base
 {
@@ -40,6 +38,54 @@ namespace Business.Base
         {
             _ctrl = ctrl;
         }
+
+        private bool Validation(ProccessType proccessType,BaseEntity oldEntity,BaseEntity currentEntity,Expression<Func<T,bool>> filter)
+        {
+            string GetValidationErrorControl()
+            {
+                string RepeatedPrivateCode()
+                {
+                    foreach (var property in typeof(T).GetPropertyAttributesFromType<PrivateCode>())
+                    {
+                        if(property.Attribute==null) continue;
+                        if((proccessType==ProccessType.EntityInsert || oldEntity.PrivateCode==currentEntity.PrivateCode) && proccessType==ProccessType.EntityUpdate) continue;
+                        if(_uow.Rep.Count(filter)<1) continue;
+
+                        Messages.RepeatedEntityErrorMessage(property.Attribute.Description);
+                        return property.Attribute.ControlName;
+                    }
+
+                    return null;
+                }
+
+                string IncorrentAccess()
+                {
+
+                    foreach (var property in typeof(T).GetPropertyAttributesFromType<RequiredFields>())
+                    {
+                        if (property.Attribute == null) continue;
+                        var value = property.Property.GetValue(currentEntity);
+
+                        if (property.Property.PropertyType == typeof(long))
+                            if ((long) value == 0)
+                                value = null;
+
+                        if(!string.IsNullOrEmpty(value?.ToString())) continue;
+                        Messages.InvalidErrorMessage(property.Attribute.Description);
+                        return property.Attribute.ControlName;
+                    }
+
+                    return null;
+                }
+
+                return IncorrentAccess() ?? RepeatedPrivateCode();
+            }
+
+            var errorControl = GetValidationErrorControl();
+            if (errorControl == null) return true;
+            _ctrl.Controls[errorControl].Focus();
+            return false;
+        } 
 
         #region Comment
         /*
@@ -79,7 +125,7 @@ namespace Business.Base
         protected bool BaseInsert(BaseEntity entity, Expression<Func<T, bool>> filter)
         {
             GeneralFunctions.CreateUnitOfWork<T, TContext>(ref _uow);
-            //Validation will be here later
+            if (!Validation(ProccessType.EntityInsert, null, entity, filter)) return false;
             _uow.Rep.Insert(entity.EntityConvert<T>());
             return _uow.Save();
         }
@@ -94,7 +140,7 @@ namespace Business.Base
         {
 
             GeneralFunctions.CreateUnitOfWork<T, TContext>(ref _uow);
-            //Validation will be here later
+            if (!Validation(ProccessType.EntityUpdate, oldEntity, currentEntity, filter)) return false;
             var changedFields = oldEntity.GetChangedFields(currentEntity);
             if (changedFields.Count == 0) return true;
             _uow.Rep.Update(currentEntity.EntityConvert<T>(), changedFields);

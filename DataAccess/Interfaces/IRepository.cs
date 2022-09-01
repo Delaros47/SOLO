@@ -78,5 +78,7 @@ namespace DataAccess.Interfaces
         #endregion
         string GeneratePrivateCode(FormType formType, Expression<Func<T, string>> filter, Expression<Func<T, bool>> where = null);
 
+        int Count(Expression<Func<T,bool>> filter=null);
+
     }
 }

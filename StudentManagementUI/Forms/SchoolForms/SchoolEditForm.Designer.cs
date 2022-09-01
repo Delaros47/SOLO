@@ -166,7 +166,7 @@
             this.tglState.Properties.OffText = "Passive";
             this.tglState.Properties.OnText = "Active";
             this.tglState.Size = new System.Drawing.Size(109, 20);
-            this.tglState.StatusBarDescription = "Choose the state of your form";
+            this.tglState.StatusBarDescription = "Choose the state of the Form";
             this.tglState.StyleController = this.myDataLayoutControl;
             this.tglState.TabIndex = 4;
             // 

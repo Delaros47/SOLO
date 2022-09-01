@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Attributes;
 
 namespace Model.Entities.Base
 {
@@ -24,7 +25,7 @@ namespace Model.Entities.Base
     {
         [Column(Order =0),Key,DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
-        [Column(Order =1),Required,StringLength(25)]
+        [Column(Order =1),Required,StringLength(25),PrivateCode("Private Code","txtPrivateCode"),RequiredFields("Private Code","txtPrivateCode")]
         public virtual string PrivateCode { get; set; }
     }
 }

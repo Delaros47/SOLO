@@ -30,7 +30,6 @@ namespace StudentManagementUI.Forms.BaseForms
          * BaseFormTemplateWillBeSaved; BaseTableTemplateWillBeSaved; we have here two variables that one is for saving template of for ListForm another one is just for Table(GridView)
          */
         #endregion
-
         private bool BaseFormTemplateWillBeSaved;
         private bool BaseTableTemplateWillBeSaved;
         protected IBaseFormShow BaseFormShow;
@@ -458,27 +457,27 @@ namespace StudentManagementUI.Forms.BaseForms
             }
             else if (e.Item == btnExcelFileStandard)
             {
-
+                BaseTable.ExportTableData(FileType.ExcelStandard,e.Item.Caption,Text);
             }
             else if (e.Item == btnExcelFileFormatted)
             {
-
+                BaseTable.ExportTableData(FileType.ExcelFormatted,e.Item.Caption,Text);
             }
             else if (e.Item == btnExcelFileUnformatted)
             {
-
+                BaseTable.ExportTableData(FileType.ExcelUnFormatted,e.Item.Caption,Text);
             }
             else if (e.Item == btnPdfFile)
             {
-
+                BaseTable.ExportTableData(FileType.PdfFile,e.Item.Caption);
             }
             else if (e.Item == btnWordFile)
             {
-
+                BaseTable.ExportTableData(FileType.WordFile,e.Item.Caption);
             }
             else if (e.Item == btnTxtFile)
             {
-
+                BaseTable.ExportTableData(FileType.TxtFile,e.Item.Caption);
             }
             else if (e.Item == btnNew)
             {

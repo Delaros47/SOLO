@@ -1,4 +1,5 @@
-﻿using Model.Entities.Base;
+﻿using Model.Attributes;
+using Model.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,7 +19,7 @@ namespace Model.Entities
     {
         [Index("IX_PrivateCode",IsUnique =false)]
         public override string PrivateCode { get; set; }
-        [Required,StringLength(50)]
+        [Required,StringLength(50), RequiredFields("District Name", "txtDistrictName")]
         public string DistrictName { get; set; }
         public long CityId { get; set; }
         [StringLength(500)]
