@@ -21,6 +21,9 @@ namespace Common.Enums
         [Description("City Record")]
         City = 2,
         [Description("District Record")]
-        District = 3
+        District = 3,
+        [Description("Filter Record")]
+        Filter=4,
+        
     }
 }

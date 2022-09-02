@@ -23,6 +23,7 @@ namespace StudentManagementUI.Forms.CityForms
             BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new City() : ((CityBll)BaseBll).Single(FilterFunctions.Filter<City>(BaseEditId));
             BindEntityToControls();
             if (BaseProccessType != ProccessType.EntityInsert) return;
+            BaseEditId = BaseProccessType.CreateId(BaseOldEntity);
             txtPrivateCode.Text = ((CityBll)BaseBll).GeneratePrivateCode();
             txtCityName.Focus();
 

@@ -37,6 +37,8 @@
             this.statusBarDescription = new DevExpress.XtraBars.BarStaticItem();
             this.statusBarShortcut = new DevExpress.XtraBars.BarStaticItem();
             this.statusBarShortcutDescription = new DevExpress.XtraBars.BarStaticItem();
+            this.btnSaveAs = new DevExpress.XtraBars.BarButtonItem();
+            this.btnApply = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -59,9 +61,11 @@
             this.btnExit,
             this.statusBarDescription,
             this.statusBarShortcut,
-            this.statusBarShortcutDescription});
+            this.statusBarShortcutDescription,
+            this.btnSaveAs,
+            this.btnApply});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 9;
+            this.ribbonControl.MaxItemId = 11;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -151,6 +155,26 @@
             this.statusBarShortcutDescription.ItemAppearance.Normal.Options.UseForeColor = true;
             this.statusBarShortcutDescription.Name = "statusBarShortcutDescription";
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Caption = "Save As";
+            this.btnSaveAs.Id = 9;
+            this.btnSaveAs.ImageOptions.Image = global::StudentManagementUI.Properties.Resources.saveall_16x16;
+            this.btnSaveAs.ImageOptions.LargeImage = global::StudentManagementUI.Properties.Resources.saveall_32x32;
+            this.btnSaveAs.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F2));
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // btnApply
+            // 
+            this.btnApply.Caption = "Apply";
+            this.btnApply.Id = 10;
+            this.btnApply.ImageOptions.Image = global::StudentManagementUI.Properties.Resources.insertrangefilter_16x16;
+            this.btnApply.ImageOptions.LargeImage = global::StudentManagementUI.Properties.Resources.insertrangefilter_32x32;
+            this.btnApply.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F8);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -162,8 +186,10 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnNew);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSave);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnSaveAs);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUndo);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDelete);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnApply);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnExit);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
@@ -216,5 +242,7 @@
         protected DevExpress.XtraBars.BarStaticItem statusBarDescription;
         protected DevExpress.XtraBars.BarStaticItem statusBarShortcut;
         protected DevExpress.XtraBars.BarStaticItem statusBarShortcutDescription;
+        private DevExpress.XtraBars.BarButtonItem btnSaveAs;
+        private DevExpress.XtraBars.BarButtonItem btnApply;
     }
 }

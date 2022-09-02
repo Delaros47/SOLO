@@ -98,6 +98,18 @@
     <Compile Include="Forms\DistrictForms\DistrictListForm.Designer.cs">
       <DependentUpon>DistrictListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FilterForms\FilterEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FilterForms\FilterEditForm.Designer.cs">
+      <DependentUpon>FilterEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FilterForms\FilterListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FilterForms\FilterListForm.Designer.cs">
+      <DependentUpon>FilterListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +237,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DistrictForms\DistrictListForm.resx">
       <DependentUpon>DistrictListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FilterForms\FilterEditForm.resx">
+      <DependentUpon>FilterEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FilterForms\FilterListForm.resx">
+      <DependentUpon>FilterListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -456,6 +474,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\documentmap_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveall_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveall_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insertrangefilter_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insertrangefilter_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

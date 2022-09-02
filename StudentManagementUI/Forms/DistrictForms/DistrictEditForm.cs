@@ -33,6 +33,7 @@ namespace StudentManagementUI.Forms.DistrictForms
             BaseOldEntity = BaseProccessType == ProccessType.EntityInsert ? new District() : ((DistrictBll)BaseBll).Single(FilterFunctions.Filter<District>(BaseEditId));           
             BindEntityToControls();
             if (BaseProccessType != ProccessType.EntityInsert) return;
+            BaseEditId = BaseProccessType.CreateId(BaseOldEntity);
             txtPrivateCode.Text = ((DistrictBll)BaseBll).GeneratePrivateCode(x => x.CityId == _cityId);
             txtDistrictName.Focus();
             Text = Text + $" ({_cityName}) ";

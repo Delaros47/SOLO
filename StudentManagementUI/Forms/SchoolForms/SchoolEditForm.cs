@@ -44,6 +44,7 @@ namespace StudentManagementUI.Forms.SchoolForms
              */
             #endregion
             if (BaseProccessType != ProccessType.EntityInsert) return;
+            BaseEditId = BaseProccessType.CreateId(BaseOldEntity);
             txtPrivateCode.Text = ((SchoolBll)BaseBll).GeneratePrivateCode();
             txtSchoolName.Focus();
         }

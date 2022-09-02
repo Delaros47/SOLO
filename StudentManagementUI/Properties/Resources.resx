@@ -124,9 +124,6 @@
   <data name="convert_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convert_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="doubleprev_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\doubleprev_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="prev_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\prev_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,6 +132,9 @@
   </data>
   <data name="suggestion_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\suggestion_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prev_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="last_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\last_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,6 +208,9 @@
   <data name="addfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="saveall_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveall_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="next_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\next_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,8 +220,14 @@
   <data name="edit_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="documentmap_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\documentmap_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="apply_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apply_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saveall_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveall_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="deletelist_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deletelist_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +238,8 @@
   <data name="crossdatasourcefiltering _16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crossdatasourcefiltering _16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="prev_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\prev_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="doubleprev_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doubleprev_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="print_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\print_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,7 +274,10 @@
   <data name="article_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\article_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="documentmap_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\documentmap_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="insertrangefilter_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insertrangefilter_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="insertrangefilter_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insertrangefilter_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

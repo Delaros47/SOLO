@@ -57,12 +57,18 @@
     <Compile Include="Entities\Base\Interfaces\IBaseEntity.cs" />
     <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\District.cs" />
+    <Compile Include="Entities\Filter.cs" />
     <Compile Include="Entities\School.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{DECE1A01-2CA9-489A-BD6E-C57B2A0F8481}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
